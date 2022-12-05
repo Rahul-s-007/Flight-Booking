@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Registration</title>
+</head>
+<body>
+<div>
+    <h1>User Registration</h1>
+    <form action="#" th:action="@{/FlightInfo}" method="post" th:object="${user}">
+        <label>From:</label>
+        <input type="text" th:field="*{from}" /><br/>
+ 
+        <label>To:</label>
+        <input type="text" th:field="*{to}" /><br/>
+
+        <label>Date:</label>
+        <input type="date" th:field="*{date}" /><br/>
+ 
+        <label>Numbe of passengers</label>
+        <input type="number" th:field="*{passengers}"/><br/>
+        <button type="submit">Register</button>    
+    </form>
+</div>
+</body>
+</html>
