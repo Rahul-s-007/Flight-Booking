@@ -12,6 +12,9 @@ public class UserController {
     @GetMapping("/FlightInfo")
     public String StartFlightInfo(Model model) {
         FlightInfoUser Flightinfo = new FlightInfoUser();
+        testdb sample = new testdb();
+        dbclass simper = new dbclass(sample.getans());
+        model.addAttribute("simper", simper);
         model.addAttribute("Flightinfo", Flightinfo);
         return "FlightInfoUser";
     }
