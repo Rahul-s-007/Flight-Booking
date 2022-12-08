@@ -61,6 +61,47 @@ public class testdb {
         ob.getPassengers();
         return "bruh";
     }
+
+
+    // F1
+    public String getAvailableFlights(FlightInfoUser ob)
+    {
+        Date date = ob.getDate();
+        String to = ob.getTo();
+        String from = ob.getFrom();
+        int passengers = ob.getPassengers();
+
+        String query = String.format("Select FlightID from FlightDetails Where to=%s and from=%s and date=%t and num_seats >= %d",to,from,date,passengers);
+
+        // edit the output below
+        try
+        {
+            rs = st.executeQuery(query);
+            while(rs.next())
+            {
+                    //System.out.println(rs.getString(1));
+                    //System.out.println(rs.getString(2));
+                    //System.out.println(rs.getString(3));
+                    //System.out.println("-------------");
+                    ans += rs.getString(1)  +" "+ rs.getString(2) +" "+ rs.getString(3) +"\n";
+            }
+            return ans;
+        }
+        catch(SQLException ex)
+        {
+            //JOptionPane.showMessageDialog(null,"Error:"+ex);
+            System.out.println("Error");
+            return ex.toString();
+        }
+    }
+
+    //F2 
+    public String userLoginCheck(FlightInfoUser ob)
+    {
+        //
+    }
+
+
     public static void main(String args[])
     {
         testdb cdb = new testdb();
