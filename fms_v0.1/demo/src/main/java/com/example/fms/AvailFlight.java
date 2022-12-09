@@ -1,26 +1,19 @@
 package com.example.fms;
-import java.sql.Date;
 
 public class AvailFlight
 {
     private String Flightnums;
-    private String From;
-    private String To;
-    private Date FlightDate;
-
-        public AvailFlight(String Flightnums,String From,String To,Date date)
+    private String DepartureTime;
+    private String ArrivalTime;
+    private String EconomyPrice;
+    private String BusinessPrice;
+        public AvailFlight(String Flightnums,String DepartureTime,String ArrivalTime,String EconomyPrice,String BusinessPrice)
         {
             this.Flightnums=Flightnums;
-            this.From=From;
-            this.To=To;
-            this.FlightDate=date;
-
-        }
-        public AvailFlight(String Flightnums,String From,String To)
-        {
-            this.Flightnums=Flightnums;
-            this.From=From;
-            this.To=To;
+            this.DepartureTime=DepartureTime;
+            this.ArrivalTime=ArrivalTime;
+            this.EconomyPrice=EconomyPrice;
+            this.BusinessPrice=BusinessPrice;
 
         }
         public AvailFlight()
@@ -31,29 +24,38 @@ public class AvailFlight
         {
             return this.Flightnums;
         }
-        public String getFrom()
-        {
-            return this.From;
-        }
-        public String getTo()
-        {
-            return this.To;
-        }
-        public Date getdate()
-        {
-            return this.FlightDate;
-        }
-        public void setTo(String to) {
-            To = to;
-        }
-        public void setdate(Date date) {
-            this.FlightDate = date;
-        }
         public void setFlightnums(String flightnums) {
             Flightnums = flightnums;
         }
-        public void setFrom(String from) {
-            From = from;
-        }  
-    
+        public String getArrivalTime()
+        {
+            return ArrivalTime;
+        }
+        public void setArrivalTime(String arrivalTime)
+        {
+            ArrivalTime = arrivalTime;
+        }
+        public void setBusinessPrice(String businessPrice)
+        {
+            BusinessPrice = businessPrice;
+        }
+        public String getBusinessPrice()
+        {
+            return BusinessPrice;
+        }
+        public void setDepartureTime(String departureTime)
+        {
+            DepartureTime = departureTime;
+        }
+        public String getDepartureTime()
+        {
+            return DepartureTime;
+        }
+        public void setEconomyPrice(String economyPrice)
+        {
+            EconomyPrice = economyPrice;
+        }
+        public String getEconomyPrice() {
+            return EconomyPrice;
+        }
 }

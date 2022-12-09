@@ -17,8 +17,10 @@
         <h3>flight nos</h3>
          <ul th:each="num: ${avf}">
             <li th:text="${num.Flightnums}"></li>
-            <li th:text="${num.From}"></li>
-            <li th:text="${num.To}"></li>
+            <li th:text="${num.DepartureTime}"></li>
+            <li th:text="${num.ArrivalTime}"></li>
+            <li th:text="${num.EconomyPrice}"></li>
+            <li th:text="${num.BusinessPrice}"></li>
         </ul>
         <!-- <table>
             <thead>

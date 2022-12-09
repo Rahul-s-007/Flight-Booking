@@ -6,96 +6,65 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
-    
+    //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> FilledSeats=new ArrayList<AvailSeats>();
+   //making objects because Spring boot is mother fucking annoying 
+   FlightInfoUser fiu=new FlightInfoUser();
+   ShowAvailFlights saf=new ShowAvailFlights();
     @GetMapping("/FlightInfo")
     public String StartFlightInfo(Model model) {
+        //creating objects of the flightinfoUser and add it to html to get input 
         FlightInfoUser Flightinfo = new FlightInfoUser();
-        testdb sample = new testdb();
-        dbclass simper = new dbclass(sample.getans());
-        model.addAttribute("simper", simper);
         model.addAttribute("Flightinfo", Flightinfo);
+        //the return statement call the html file to run(return statement and the html file name should be same)
         return "FlightInfoUser";
     }
     @PostMapping(path="/FlightInfo")
     public String EndFlightInfo(@ModelAttribute("Flightinfo") FlightInfoUser Flightinfo, Model model) {
-        // ShowAvailFlights FlightNoSelected = new ShowAvailFlights();
-        // model.addAttribute("FlightNoSelected", FlightNoSelected);
-        ArrayList<String> FlightNo=new ArrayList<String>();
-        ArrayList<String> Departure=new ArrayList<String>();
-        ArrayList<String> Arrival=new ArrayList<String>();
-        // ArrayList<Integer> Economy=new ArrayList<Integer>();
-        // ArrayList<Integer> Business=new ArrayList<Integer>();
-
-        // ArrayList<Date> flightDate=new ArrayList<Date>();
-
-       
-        FlightNo.add("EK069");
-        FlightNo.add("EK420");
-        FlightNo.add("EK123");
-        Departure.add("Dubai");
-        Departure.add("Dubai");
-        Departure.add("Dubai");
-        Arrival.add("Mumbai");
-        Arrival.add("Mumbai");
-        Arrival.add("Mumbai");
-        Arrival.add("Mumbai");
-        // flightDate.add(0,Date.valueOf("2023-01-07"));
-        // flightDate.add(1,Date.valueOf("2023-01-08"));
-        // flightDate.add(2,Date.valueOf("2023-01-09"));
-
-
-        // avf.add(new AvailFlight("EK069", "mumbai", "Dubai"));
-        // avf.add(new AvailFlight("EK420", "mumbai", "Dubai"));
-        // avf.add(new AvailFlight("EK101", "mumbai", "Dubai"));
-        //setting all attributes
-        //here we call the query for the flight available 
-        // model.addAttribute("FlightNo", FlightNo);
-        // model.addAttribute("Departure", Departure);
-        // model.addAttribute("Arrival", Arrival);
-        // model.addAttribute("Economy", Economy);
-        // model.addAttribute("Business", Business);
-        // model.addAttribute("flightDate",flightDate);
-        // model.addAttribute("avf", avf);
+        fiu=Flightinfo;
+        //the return statement call the html file to run(return statement and the html file name should be same)
         return "ShowAvailableFlight";
     }
     @GetMapping("/ShowAvailableFlight")
     public String StartShowFlights(Model model)
     {
+        //use fiu to call the query
+        // adding the available flight(thier flight no,time of departur and time of arrival) to avf(for testing adding like else we will call a function to carry out the query)
+        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
+        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
+        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
+        //creating objects of the ShowAvailFlight and add it to html to get input 
         ShowAvailFlights FlightNoSelected= new ShowAvailFlights();
         model.addAttribute("FlightNo", FlightNoSelected);
-        avf.add(new AvailFlight("EK069", "mumbai", "Dubai"));
-        avf.add(new AvailFlight("EK420", "mumbai", "Dubai"));
-        avf.add(new AvailFlight("EK101", "mumbai", "Dubai"));
+        //adding avf for the html to get the available flights
         model.addAttribute("avf", avf);
+        //the return statement call the html file to run(return statement and the html file name should be same)
         return "ShowAvailableFlight";
     }
     @PostMapping("/ShowAvailableFlight")
     public String EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model)
     {
-       
-        // ArrayList<AvailSeats> FilledSeats=new ArrayList<AvailSeats>();
-        // FilledSeats.add(new AvailSeats("A2"));
-        // FilledSeats.add(new AvailSeats("A3"));
-        // FilledSeats.add(new AvailSeats("A4"));
-        // FilledSeats.add(new AvailSeats("A5"));
-        // FilledSeats.add(new AvailSeats("A6"));
-        // model.addAttribute("FilledSeats", FilledSeats);
-        
+        saf=FlightNoSelected;
+        //the return statement call the html file to run(return statement and the html file name should be same)
         return "AvailableSeats";
     }
     @GetMapping("/AvailableSeats")
     public String StartAvailableSeats(Model model)
     {
-       SelectedSeats ss = new SelectedSeats();
-       model.addAttribute("SelectedSeats", ss);
+        //use saf to call the query
+        // adding the seat that are filled(in form of String a Capital letter and a number next to it) to FilledSeats(for testing adding like else we will call a function to carry out the query)
         FilledSeats.add(new AvailSeats("A2"));
         FilledSeats.add(new AvailSeats("A3"));
         FilledSeats.add(new AvailSeats("A4"));
         FilledSeats.add(new AvailSeats("A5"));
         FilledSeats.add(new AvailSeats("A6"));
+        //creating objects of the SelectedSeats and add it to html to get input
+       SelectedSeats ss = new SelectedSeats();
+       model.addAttribute("SelectedSeats", ss);
+       //adding FilledSeats for the html to get the seats alreay filled
         model.addAttribute("FilledSeats", FilledSeats);
+        //the return statement call the html file to run(return statement and the html file name should be same)
         return "AvailableSeats";
     }
     @PostMapping("/AvailableSeats")
