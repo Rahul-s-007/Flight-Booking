@@ -10,13 +10,30 @@ public class UserController {
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> FilledSeats=new ArrayList<AvailSeats>();
    //making objects because Spring boot is mother fucking annoying 
+   LoginUser lu = new LoginUser();
    FlightInfoUser fiu=new FlightInfoUser();
    ShowAvailFlights saf=new ShowAvailFlights();
+
+   @GetMapping("/UserLogin")
+   public String StartUserLogin(Model model){
+    //creating objects of the LoginUser and add it to html to get input 
+        LoginUser loginuser = new LoginUser();
+        model.addAttribute("loginuser", loginuser);
+        //the return statement call the html file to run(return statement and the html file name should be same)
+        return "UserLogin";
+   }
+   @PostMapping("/UserLogin")
+   public String EndUserLogin(@ModelAttribute("loginuser") LoginUser loginuser, Model model){
+        lu = loginuser;
+        //the return statement call the html file to run(return statement and the html file name should be same)
+        return "FlightInfoUser";
+   }
     @GetMapping("/FlightInfo")
     public String StartFlightInfo(Model model) {
         //creating objects of the flightinfoUser and add it to html to get input 
         FlightInfoUser Flightinfo = new FlightInfoUser();
         model.addAttribute("Flightinfo", Flightinfo);
+        model.addAttribute("loginuser", lu);
         //the return statement call the html file to run(return statement and the html file name should be same)
         return "FlightInfoUser";
     }
