@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;627&family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;700&family=Montserrat&family=Rubik&family=Source+Sans+Pro:wght@400;600;700&display=swap');
+
+*,*::after,*::before
+{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro';
+}
+body
+{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(138.2deg, #FFFFFF -13.82%, #2692D1 39.12%, #114AA0 87.22%);
+}
+
+/* Header */
+.logo
+{
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    left: 20px;
+    top: 0px; 
+}
+header div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    position: absolute;
+    width: 83px;
+    height: 35px;
+    right: 0;
+    top: 40px;
+}
+header div a
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+    text-decoration-line: underline;
+    color: #0B3491;
+}
+
+/* Box */
+
+.box
+{
+    box-sizing: border-box;
+    width: 50%;
+    height: 65%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: -1px -1px 30px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 40px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+.heading
+{
+    text-align: center;
+    vertical-align: middle;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 90px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.summary
+{
+    position: absolute;
+    margin-left: 5%;
+}
+.summary h2
+{
+    padding: 10px;
+    display: inline-block;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    color: rgba(0, 0, 0, 0.7);  
+}
+.summary .total_pay
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 125%;
+    color: rgba(0, 0, 0, 1);
+}
+.summary span
+{
+    padding: 10px;
+    display: inline-block;
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 125%;
+    color: rgba(0, 0, 0, 0.5);
+}
+.summary .info
+{
+    color: rgba(0, 0, 0, 1);
+    font-weight: 700;
+}
+.button
+{
+    cursor: pointer;
+    width: 140px;
+    height: 50px;
+    border: none;
+    background: #1351A5;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5%;
+}
+.button p
+{
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    color: #FFFFFF;
+    transition: .5s;
+}
+/* .button:hover
+{
+    transform: translateY(-1%);
+} */
