@@ -18,7 +18,37 @@ body
   background:	#5D6675;
   color: #fff;
 }
-
+header div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    position: absolute;
+    width: 83px;
+    height: 35px;
+    right: 10px;
+    top: 40px;
+}
+header div a
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+    text-decoration-line: underline;
+    color: #0B3491;
+}
+.logo
+{
+    position: relative;
+    width: 140px;
+    height: 140px;
+    left: 20px;
+    top: 0px; 
+}
 /* CARD START */
 
 .container
@@ -29,7 +59,6 @@ body
   margin: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 5%;
 }
 h1
 {
