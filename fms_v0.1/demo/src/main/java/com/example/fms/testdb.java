@@ -8,7 +8,6 @@ public class testdb {
     private Connection con;
     private Statement st;
     private ResultSet rs;
-    
 
     //Constructor
     public testdb()
@@ -24,6 +23,7 @@ public class testdb {
             System.out.println("Error");
         }
     }
+    
     public String exeQuery(String query) //to get table output
     {
         try
