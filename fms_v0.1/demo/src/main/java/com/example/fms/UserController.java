@@ -12,8 +12,6 @@ public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> FilledSeats=new ArrayList<AvailSeats>();
-   //lu is for test as of now
-   LoginUser lu = new LoginUser();
 
    @GetMapping("/")
    public String StartUserLogin(Model model){
@@ -25,7 +23,21 @@ public class UserController {
    }
    @PostMapping("/")
    public  @ResponseBody void EndUserLogin(@ModelAttribute("loginuser") LoginUser loginuser, Model model,HttpServletResponse response) throws IOException{
-        lu=loginuser;
+        //call the query to check wether the username and password is correct if not redirect to error page
+        //redirecting to the next page after getting the info from html
+        response.sendRedirect("/FlightInfo");
+   }
+   @GetMapping("/NewUser")
+   public String StartNewUser(Model model){
+    //creating objects of the LoginUser and add it to html to get input 
+    NewUser newuser = new NewUser();
+        model.addAttribute("newuser", newuser);
+        //the return statement call the html file to run(return statement and the html file name should be same)
+        return "new_user";
+   }
+   @PostMapping("/NewUser")
+   public  @ResponseBody void EndNewUser(@ModelAttribute("newuser") NewUser newuser, Model model,HttpServletResponse response) throws IOException{
+        //call a query to add the new username and password
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/FlightInfo");
    }
@@ -34,7 +46,6 @@ public class UserController {
         //creating objects of the flightinfoUser and add it to html to get input 
         FlightInfoUser Flightinfo = new FlightInfoUser();
         model.addAttribute("Flightinfo", Flightinfo);
-        model.addAttribute("loginuser", lu);
         //the return statement call the html file to run(return statement and the html file name should be same)
         return "FlightInfoUser";
     }
