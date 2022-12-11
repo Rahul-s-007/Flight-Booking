@@ -59,8 +59,7 @@ body
     align-items: center;
     position: absolute;
     width: 30%;
-    height: 90%;
-    left: 0;
+    height: 80%;
     right: 0;
     margin: auto;
     top: 50%;
@@ -74,7 +73,7 @@ body
 .heading
 {
     position: absolute;
-    top: 3%;
+    top: 5%;
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 700;
@@ -86,10 +85,8 @@ form
 {
     width: 280px;
     height: 380px;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
-    margin-right: 10%;
+    margin-right: 5%;
+    margin-top: 20%;
 }
 .icon
 {
