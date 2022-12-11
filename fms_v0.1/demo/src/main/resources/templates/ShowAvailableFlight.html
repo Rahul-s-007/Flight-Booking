@@ -11,8 +11,8 @@
 <body>
 <!-- Navigation -->
 <header>
-    <a href="\index"><img th:src="@{/img/LOGO.svg}" alt="" srcset="" class="logo"></a>
-    <div><a href="\selection.html">Return</a></div>
+    <a href="\FlightInfo"><img th:src="@{/img/LOGO.svg}" alt="" srcset="" class="logo"></a>
+    <div><a href="\FlightInfo">Return</a></div>
 </header>
 <section>
     <div class="message">
@@ -31,7 +31,7 @@
                 <div id="depart_time">
                     <li th:text="${num.DepartureTime}">5:20</li>
                 </div>
-                <div id="icon"><img src="./img/Center design.svg" alt="" srcset=""></div>
+                <div id="icon"><img th:src="@{/img/Center Design.svg.png}" alt="" srcset=""></div>
                 <div id="arrive_time">
                     <li th:text="${num.ArrivalTime}">17:00</li>
                 </div>
