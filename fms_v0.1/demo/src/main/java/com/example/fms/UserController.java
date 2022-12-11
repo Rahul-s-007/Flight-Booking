@@ -15,15 +15,15 @@ public class UserController {
    //lu is for test as of now
    LoginUser lu = new LoginUser();
 
-   @GetMapping("/UserLogin")
+   @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
     LoginUser loginuser = new LoginUser();
         model.addAttribute("loginuser", loginuser);
         //the return statement call the html file to run(return statement and the html file name should be same)
-        return "UserLogin";
+        return "index";
    }
-   @PostMapping("/UserLogin")
+   @PostMapping("/")
    public  @ResponseBody void EndUserLogin(@ModelAttribute("loginuser") LoginUser loginuser, Model model,HttpServletResponse response) throws IOException{
         lu=loginuser;
         //redirecting to the next page after getting the info from html

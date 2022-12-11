@@ -1,10 +1,42 @@
-<!DOCTYPE HTML>
-<html>
-<head> 
-    <title>Getting Started: Serving Web Content</title> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/index.css}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>Login</title>
 </head>
 <body>
-    <p>Proceed to user Login: <a href="/UserLogin">here</a></p>
+    <header>
+        <a href="login.html"><img th:src="@{/img/LOGO.svg}" alt="" srcset="" class="logo"></a>
+    </header>
+        <h1 class="welcome">WELCOME EXPLORER!</h1>
+        <h3 class="quote">
+            “A good traveler has no
+            fixed plans, and is not 
+            intent on arriving.” - Lao Tzu</h3>
+    <div class="container">
+        <h1 class="heading">FLIGHT FINDER</h1>
+        <form action="#" th:action="@{/}" method="post" th:object="${loginuser}">
+                <p id="username">Username</p>
+                <ion-icon name="person-sharp" class="icon"></ion-icon>
+                <input type="text" id="username_box" th:field="*{Username}" autocomplete="off">
+
+                <p id="password">Password</p>
+                <ion-icon name="lock-closed-sharp" class="icon"></ion-icon>
+                <input type="password" id="password_box" th:field="*{Password}" autocomplete="off">
+                
+            <div class="link">
+            <a href="#" class="links">Forgot password</a>
+            <br>
+            <a href="new_user.html" class="links">New User</a>
+            </div>
+            <br>
+            <button class="button" type="submit"><p>LET'S FLY</p></button>
+        </form>
+    </div>
 </body>
 </html>
