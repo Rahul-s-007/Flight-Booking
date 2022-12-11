@@ -7,6 +7,49 @@
     <title>Error</title>
 </head>
 <style>
+    *,*::after,*::before
+{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro';
+    min-height: 100%;
+}
+body
+{
+    position: relative;
+}
+header div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    position: absolute;
+    width: 83px;
+    height: 35px;
+    right: 10px;
+    top: 40px;
+}
+header div a
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+    text-decoration-line: underline;
+    color: #0B3491;
+}
+.logo
+{
+    position: relative;
+    width: 140px;
+    height: 140px;
+    left: 20px;
+    top: 0px; 
+}
     img
     {
         position: absolute;
@@ -14,10 +57,15 @@
         right: 0;
         margin: auto;
         width: 500px;
-        width: 500px;
+        width: 400px;
+        top: 10%;
     }
 </style>
 <body>
+    <header>
+        <a href="\FlightInfo"><img th:src="@{/img/LOGO.svg}" alt="" srcset="" class="logo"></a>
+        <div><a href="\FlightInfo">Return</a></div>
+    </header>
     <img src="./img/error.jpg" alt="" srcset="">
 </body>
 </html>
