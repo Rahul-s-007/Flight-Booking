@@ -35,22 +35,22 @@
     <form action="#" th:action="@{FlightInfo}" method="post" th:object="${Flightinfo}">
         <div class="box">
             <div class="inputBox" id="departure">
-                <input type="text" th:field="*{from}" required = "required">
+                <input type="text" th:field="*{from}" required = "required" autocomplete="off">
                 <span>Departure Airport<ion-icon name="airplane-outline" class="icon"></ion-icon></span>
             </div>
 
             <div class="inputBox" id="arrival">
-                <input type="text" th:field="*{to}" required = "required">
+                <input type="text" th:field="*{to}" required = "required" autocomplete="off">
                 <span>Arrival Airport<ion-icon name="airplane-outline" class="icon"></ion-icon></span>
             </div> 
          
             <div class="inputBox" id="date">
-                <input type="date" th:field="*{date}" required = "required" id="date_input">
+                <input type="date" th:field="*{date}" required = "required" id="date_input" autocomplete="off">
                 <span id="date_id">Date<ion-icon name="calendar-outline" class="icon1"></ion-icon></span>
             </div>
 
             <div class="inputBox" id="passenger">
-                <select id="passenger_box" th:field="*{passengers}">
+                <select id="passenger_box" th:field="*{passengers}" autocomplete="off">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

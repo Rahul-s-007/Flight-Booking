@@ -7,11 +7,13 @@
     box-sizing: border-box;
     font-family: 'Source Sans Pro';
 }
+html
+{
+    min-height: 100%;
+}
 body
 {
     position: relative;
-    width: 100vw;
-    height: 100vh;
     background: linear-gradient(138.2deg, #FFFFFF -13.82%, #2692D1 39.12%, #114AA0 87.22%);
 }
 
@@ -88,12 +90,14 @@ section
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 
 }
 .container ul
 {
     display: block;
     flex-direction: row;
+    padding: 30px;
 
 }
 .main_box
