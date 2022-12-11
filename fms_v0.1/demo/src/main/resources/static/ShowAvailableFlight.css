@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;627&family=EB+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;700&family=Montserrat&family=Rubik&family=Source+Sans+Pro:wght@200;300;400;600;700&display=swap');
+
+*,*::after,*::before
+{
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    font-family: 'Source Sans Pro';
+}
+html
+{
+    min-height: 100%;
+}
+body
+{
+    position: relative;
+    background: linear-gradient(138.2deg, #FFFFFF -13.82%, #2692D1 39.12%, #114AA0 87.22%);
+}
+
+/* Header */
+.logo
+{
+    position: relative;
+    width: 140px;
+    height: 140px;
+    left: 20px;
+    top: 0px; 
+}
+header div
+{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 32px;
+    position: absolute;
+    width: 83px;
+    height: 35px;
+    right: 10px;
+    top: 40px;
+}
+header div a
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 125%;
+    text-decoration-line: none;
+    color: #0B3491;
+}
+header div a:hover
+{
+    text-decoration: underline;
+}
+section
+{
+    position: relative;
+}
+.message
+{
+    position: relative;
+    margin-left: 5%;
+}
+.message .city
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 130%;
+    letter-spacing: 0.05em;
+    color: #0B3491;
+}
+.message span
+{
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 130%;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.6);
+}
+.container
+{
+    position: relative;
+    height: 100%;
+    padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.container ul
+{
+    display: block;
+    flex-direction: row;
+    padding: 30px;
+
+}
+.main_box
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    width: 90vw;
+    padding-right: 30px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: -1px -1px 30px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;   
+}
+.main_box li
+{
+    list-style: none;
+    display: inline-block;
+}
+.main_box div
+{
+    display: inline-block;
+}
+#flight_number
+{
+    display: block;
+    position: relative;
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    color: rgba(0, 0, 0, 0.8);
+}
+#depart_time
+{
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 125%; 
+    color: #000000;
+    padding:40px;
+}
+#arrive_time
+{
+    font-family: 'Source Sans Pro';
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 125%; 
+    color: #000000;
+    padding:40px;
+}
+#icon
+{
+    position: relative;
+}
+#economy
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+    width: 120px;
+    background: transparent;
+    border-radius: 10px;  
+    color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    transition: .3s;
+    text-decoration: none;
+}
+#economy li
+{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    color: rgba(0, 0, 0, 0.6);   
+}
+#economy:hover
+{
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+}
+#buisness
+{
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120px;
+    width: 120px;
+    background: transparent;
+    border-radius: 10px;  
+    color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    transition: .3s;
+    text-decoration: none;
+    margin-left: 30px;
+}
+#buisness li
+{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 125%;
+    color: rgba(0, 0, 0, 0.6);   
+}
+#buisness:hover
+{
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+}

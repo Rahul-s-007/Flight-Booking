@@ -1,32 +1,75 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Flight Search</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  th:href="@{/FlightInfoUser.css}">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>Index</title>
 </head>
 <body>
-<div>
-    <h1>Search for a flight</h1>
-    <h2>Hello, <span th:text="${loginuser.Name}"></span></h2>
-    <h2>Your username is: <span th:text="${loginuser.Username}"></span></h2>
-    <h2>Your password is: <span th:text="${loginuser.Password}"></span></h2>
-    <form action="#" th:action="@{/FlightInfo}" method="post" th:object="${Flightinfo}">
-        <label>From:</label>
-        <input type="text" th:field="*{from}" /><br/>
-        <br>
-        <label>To:</label>
-        <input type="text" th:field="*{to}" /><br/>
-        <br>
-        <label>Date:</label>
-        <input type="date" th:field="*{date}" /><br/>
-        <br>
-        <label>Number of passengers</label>
-        <input type="number" th:field="*{passengers}"/>
-        <br>
-        <a href="\ShowAvailableFlight">Submit</a>
+<!-- Navigation -->
+   <div class="logo img">
+        <h1 class="name"><a href="\FlightInfo">FLIGHT FINDER</a></h1>
+    </div>
+<header>
+    <div class="topnav">
+        <a href="\contact">Contact Us</a>
+        <a href="manage.html">Manage</a>
+        <a class="active" href="#">Home</a>
+    </div>
+</header>
+<!-- Navigatoin End -->
+<!-- Hero Section -->
+    <div class="center_img">
+        <img th:src="@{/img/Center Image.png}" alt="" srcset="">
+    </div>
+    <h1 class="quote_1">GO Explore! It's a big world out there.</h1>
+    <h1 class="quote_2">Invest in unforgettable travel experiences.</h1>
+
+<!-- Detail Box -->
+
+   <div class="details_box">
+    <form action="#" th:action="@{FlightInfo}" method="post" th:object="${Flightinfo}">
+        <div class="box">
+            <div class="inputBox" id="departure">
+                <input type="text" th:field="*{from}" required = "required" autocomplete="off">
+                <span>Departure Airport<ion-icon name="airplane-outline" class="icon"></ion-icon></span>
+            </div>
+
+            <div class="inputBox" id="arrival">
+                <input type="text" th:field="*{to}" required = "required" autocomplete="off">
+                <span>Arrival Airport<ion-icon name="airplane-outline" class="icon"></ion-icon></span>
+            </div> 
+         
+            <div class="inputBox" id="date">
+                <input type="date" th:field="*{date}" required = "required" id="date_input" autocomplete="off">
+                <span id="date_id">Date<ion-icon name="calendar-outline" class="icon1"></ion-icon></span>
+            </div>
+
+            <div class="inputBox" id="passenger">
+                <select id="passenger_box" th:field="*{passengers}" autocomplete="off">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>    
+                </select>
+                <span id="date_id">Passengers<ion-icon name="person-circle-outline" class="icon1"></ion-icon></span>
+            </div>
+            <button class="button" type="submit"><p>LET'S FLY</p></button> 
+        </div>
     </form>
-    <!-- <h1>DATABASE RESULT</h1> -->
-   <!-- <span th:text=${simper.simp}></span>-->
-</div>
+   </div>
+<!-- Hero Section End -->
+
+<script>
+    document.getElementById("date_input").value="2022-12-10";
+</script>
 </body>
 </html>
+
+ <!-- Location icon  <ion-icon name="location-outline"></ion-icon>  -->
+

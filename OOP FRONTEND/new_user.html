@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="new_user.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <title>New User</title>
+</head>
+<body>
+    <header>
+        <a href="login.html"><img src="./img/LOGO.svg" alt="" srcset="" class="logo"></a>
+    </header>
+    <h1 id="greet">We are glad you are here.</h1>
+    <h3 id="quote">“The journey of a thousand miles begins with one step.”</h3>
+    <div class="container">
+        <h1 class="heading">FLIGHT FINDER</h1>
+        <form action="#" th:action="@{/login}" method="post" th:object="${login}">
+                <p id="name">Name</p>
+                <ion-icon name="person-circle-sharp" class="icon" id="name_icon"></ion-icon>
+                <input type="text" id="name_box" autocomplete="off">
+                
+                <p id="username">Username</p>
+                <ion-icon name="person-sharp" class="icon"></ion-icon>
+                <input type="text" id="username_box" th:field="*{username}" autocomplete="off">
+
+                <p id="password">Password</p>
+                <ion-icon name="lock-closed-sharp" class="icon"></ion-icon>
+                <input type="password" id="password_box" th:field="*{password}" autocomplete="off">
+                
+            <button class="button" type="submit"><p>LET'S FLY</p></button>
+        </form>
+    </div>
+</body>
+</html>

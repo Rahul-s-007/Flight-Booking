@@ -1,60 +1,50 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Showing Flight info</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/ShowAvailableFlight.css}">
+    <title>Flight Detail</title>
 </head>
 <body>
-<div>
-    <h2>Available FLights</h2>
-    <!-- <span>From: </span><span th:text="${Flightinfo.from}"></span><br/>
-    <span>To: </span><span th:text="${Flightinfo.to}"></span><br/>
-    <span>Date: </span><span th:text="${Flightinfo.date}"></span><br/>
-    <span>Number of passengers: </span><span th:text="${Flightinfo.passengers}"></span><br/> -->
-    <h2>Available flights: </h2>
-    <div class="flights">
-        fetch from db Available flights and display here
-        <h3>flight nos</h3>
-         <ul th:each="num: ${avf}">
-            <li th:text="${num.Flightnums}"></li>
-            <li th:text="${num.DepartureTime}"></li>
-            <li th:text="${num.ArrivalTime}"></li>
-            <li th:text="${num.EconomyPrice}"></li>
-            <li th:text="${num.BusinessPrice}"></li>
-        </ul>
-        <!-- <table>
-            <thead>
-                <tr>
-                    <th> Flights nos</th>
-                    <th> Author </th>
-                </tr>
-            </thead>
-            <tbody>
-           <tr th:if="${avf.empty}">
-                    <td colspan="2"> No Books Available </td>
-                </tr> 
-                <tr th:each="p: ${avf}">
-                    <td><span th:text="${p.FlightNums}"> Flight num </span></td>
-                    <td><span th:text="${pFrom}"> Author </span></td>
-                </tr>
-            </tbody>
-        </table> -->
-        <!-- <span th:each="p : ${avf}" th:text="${p.Flightnums}"></span>
-        <br>
-        <span th:each="p : ${avf}" th:text="${p.From}"></span>
-        <br>
-        <span th:each="p : ${avf}" th:text="${p.To}"></span>
-        <br> -->
-        <!-- <span th:each="p : ${avf}" th:text="${{p.FlightDate}}"></span> -->
-        <!-- <span th:text="${#dates.format(p.FlightDate, 'yyyy-MMM-dd')}"></span> -->
+<!-- Navigation -->
+<header>
+    <a href="\FlightInfo"><img th:src="@{/img/LOGO.svg}" alt="" srcset="" class="logo"></a>
+    <div><a href="\FlightInfo">Return</a></div>
+</header>
+<section>
+    <div class="message">
+        <h1 class="city">Select Your Flight from</h1>
+        <span id="depart_city">Dubai</span>
+        <span class="city">to</span>
+        <span id="arrive_city">Paris</span>
     </div>
-</div>
-<div class="form">
-    <form action="#" th:action="@{/ShowAvailableFlight}" method="post" th:object="${FlightNo}">
-        <input type="text"th:field="*{FlightNo}">
-        <!-- <button type="submit">submit</button> -->
-        <a href="\AvailableSeats">Submit</a>
-    </form>
-</div>
+    <div class="container">
+        <ul th:each="num: ${avf}">
+            <div class="main_box">
+                <div id="flight_number">
+                    Flight No.
+                    <li th:text="${num.Flightnums}">EK-501</li>
+                </div>
+                <div id="depart_time">
+                    <li th:text="${num.DepartureTime}">5:20</li>
+                </div>
+                <div id="icon"><img th:src="@{/img/center_design.svg}" alt="" srcset=""></div>
+                <div id="arrive_time">
+                    <li th:text="${num.ArrivalTime}">17:00</li>
+                </div>
+                <a href="selection.html"id="economy">Economy
+                    <li th:text="${num.EconomyPrice}">AED 1200</li>
+                </a>
+                <a href="selection.html"id="buisness">Buisness
+                    <br>
+                    <li th:text="${num.BusinessPrice}">AED 1500</li>
+                </a>
+            
+            </div>
+        </ul>
+    </div>
+</section>
 </body>
 </html>
