@@ -16,9 +16,9 @@
 <section>
     <div class="message">
         <h1 class="city">Select Your Flight from</h1>
-        <span id="depart_city">Dubai</span>
+        <span id="depart_city" th:text="${fromto.From}">Dubai</span>
         <span class="city">to</span>
-        <span id="arrive_city">Paris</span>
+        <span id="arrive_city" th:text="${fromto.To}">Paris</span>
     </div>
     <div class="container">
         <ul th:each="num: ${avf}">
@@ -35,7 +35,7 @@
                     <li th:text="${num.ArrivalTime}">17:00</li>
                 </div>
                 <a href="selection.html"id="economy">Economy
-                    <li th:text="${num.Price}">AED 1200</li>
+                    <li th:text="${num.Price}">Price</li>
                 </a>
                 <!-- <a href="selection.html"id="buisness">Buisness
                     <br>
