@@ -23,18 +23,21 @@ public class testdb
         }catch(ClassNotFoundException | SQLException ex)
         {
             //JOptionPane.showMessageDialog(null,"Error: "+ex);
-            System.out.println("DB Error");
+            System.out.println("DB Connection Error");
         }
     }
     
     
     public int isExists(String qtemp)
     {
-        String query = String.format("select exists(%s)",qtemp);
+        String query = String.format("select exists(%s) as res",qtemp);
+        System.out.println(query);
         try
         {
             rs = st.executeQuery(query);
-            if(rs.getString(1).equals("1"))
+            rs.next();
+            // System.out.println(rs.getInt("res"));
+            if(rs.getInt("res") == 1)
             {
                 return 1;
             }
@@ -46,7 +49,7 @@ public class testdb
         catch(SQLException ex)
         {
             //JOptionPane.showMessageDialog(null,"Error:"+ex);
-            System.out.println("DB Error");
+            System.out.println("DB Error (IS EXISTS)");
         }
         return 0;
     }
@@ -59,7 +62,7 @@ public class testdb
         String from = ob.getFrom();
         int passengers = ob.getPassengers();
         //select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) = "2023-01-07" AND numAvailableSeats >= 5 ORDER BY price ASC;
-        String query = String.format("select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
+        String query = String.format("select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY price ASC",to,from,date,passengers);
         ArrayList<AvailFlight> al=new ArrayList<AvailFlight>();
         
         // add datetime depature and arrival for each flight 
@@ -79,7 +82,7 @@ public class testdb
             }
             catch(SQLException ex)
             {
-                System.out.println("DB Error");
+                System.out.println("DB arr Error");
                 //return ex.toString();
             }
         }
