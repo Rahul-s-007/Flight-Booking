@@ -59,7 +59,7 @@ public class testdb
         String from = ob.getFrom();
         int passengers = ob.getPassengers();
         //select * from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) >= "2023-01-07" AND numAvailableSeats >= 5 ORDER BY ecoPrice ASC;
-        String query = String.format("select * from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) >= \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
+        String query = String.format("select * from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
         List<List<String>> ans = new ArrayList<List<String>>();
         
         int recordavail = isExists(query);
