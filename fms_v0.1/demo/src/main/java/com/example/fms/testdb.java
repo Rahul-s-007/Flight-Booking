@@ -58,10 +58,11 @@ public class testdb
         String to = ob.getTo();
         String from = ob.getFrom();
         int passengers = ob.getPassengers();
-        //select * from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) >= "2023-01-07" AND numAvailableSeats >= 5 ORDER BY ecoPrice ASC;
-        String query = String.format("select * from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
+        //select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) = "2023-01-07" AND numAvailableSeats >= 5 ORDER BY price ASC;
+        String query = String.format("select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
         List<List<String>> ans = new ArrayList<List<String>>();
         
+        // add datetime depature and arrival for each flight 
         int recordavail = isExists(query);
         if(recordavail == 1)
         {
@@ -72,15 +73,9 @@ public class testdb
                 while(rs.next())
                 {
                     ans.get(x).add(rs.getString(1)); // flightnum
-                    ans.get(x).add(rs.getString(2)); // to
-                    ans.get(x).add(rs.getString(3)); // from
-                    ans.get(x).add(rs.getString(4)); // date
-                    ans.get(x).add(rs.getString(5)); // seats available
-                    ans.get(x).add(rs.getString(6)); // economy price
-                    double bp = Double.parseDouble(rs.getString(6));
-                    bp = bp * 1.5;
-                    // String.valueOf(d); 
-                    ans.get(x).add(String.valueOf(bp)); // Buissness price
+                    ans.get(x).add(rs.getString(2)); // depature
+                    ans.get(x).add(rs.getString(3)); // arrival
+                    ans.get(x).add(rs.getString(4)); // price
                     x++;
                     //ans += rs.getString(1)  +" "+ rs.getString(2) +" "+ rs.getString(3) +"\n";
                 }
