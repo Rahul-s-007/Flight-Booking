@@ -73,15 +73,9 @@ public class testdb
                 while(rs.next())
                 {
                     ans.get(x).add(rs.getString(1)); // flightnum
-                    ans.get(x).add(rs.getString(2)); // to
-                    ans.get(x).add(rs.getString(3)); // from
-                    ans.get(x).add(rs.getString(4)); // date
-                    ans.get(x).add(rs.getString(5)); // seats available
-                    ans.get(x).add(rs.getString(6)); // economy price
-                    double bp = Double.parseDouble(rs.getString(6));
-                    bp = bp * 1.5;
-                    // String.valueOf(d); 
-                    ans.get(x).add(String.valueOf(bp)); // Buissness price
+                    ans.get(x).add(rs.getString(2)); // depature
+                    ans.get(x).add(rs.getString(3)); // arrival
+                    ans.get(x).add(rs.getString(4)); // price
                     x++;
                     //ans += rs.getString(1)  +" "+ rs.getString(2) +" "+ rs.getString(3) +"\n";
                 }
