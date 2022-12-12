@@ -12,4 +12,9 @@ public class BSController
     {
         return "contact";
     }
+    @GetMapping("/errorpage")
+    public String toErrorPage()
+    {
+        return "errorpage";
+    }
 }

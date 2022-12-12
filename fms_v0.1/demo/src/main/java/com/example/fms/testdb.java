@@ -58,8 +58,13 @@ public class testdb
         String to = ob.getTo();
         String from = ob.getFrom();
         int passengers = ob.getPassengers();
+<<<<<<< HEAD
         //select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) = "2023-01-07" AND numAvailableSeats >= 5 ORDER BY price ASC;
         String query = String.format("select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
+=======
+        //select * from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) >= "2023-01-07" AND numAvailableSeats >= 5 ORDER BY ecoPrice ASC;
+        String query = String.format("select * from allflightnum where destTO = \"%s\" AND destFROM = \"%s\" AND DATE(flightDATE) = \"%s\" AND numAvailableSeats >= %d ORDER BY ecoPrice ASC",to,from,date,passengers);
+>>>>>>> 0824f1afad021da3d1e3ae1b0add73f76681f0a6
         List<List<String>> ans = new ArrayList<List<String>>();
         
         // add datetime depature and arrival for each flight 
