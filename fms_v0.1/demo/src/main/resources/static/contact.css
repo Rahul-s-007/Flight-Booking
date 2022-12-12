@@ -118,7 +118,7 @@ h1
   width: 130px;
   border-radius: 50%;
   padding: 3px;
-  background: #5D6675;
+  background: #0000006d;
   margin-bottom: 14px;
 }
 .card .content .img img
@@ -163,7 +163,7 @@ h1
   color: #000;
   border-radius: 50%;
   border: 2px solid transparent;
-  background: rgba(255, 255, 255, 0.5);
+  background: transparent;
   transition: all 0.3s ease;
 }
 .media-icons a:hover
