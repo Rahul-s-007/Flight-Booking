@@ -57,17 +57,13 @@ public class UserController {
     }
     @PostMapping(path="/FlightInfo")
     public @ResponseBody void EndFlightInfo(@ModelAttribute("Flightinfo") FlightInfoUser Flightinfo, Model model,HttpServletResponse response)throws IOException {
-        //call query to get AvailFlights
+        avf=query.getAvailableFlights(Flightinfo);
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/ShowAvailableFlight");
     }
     @GetMapping("/ShowAvailableFlight")
     public String StartShowFlights(Model model)
     {
-        // adding the available flight(thier flight no,time of departur and time of arrival) to avf(for testing adding like else we will call a function to carry out the query)
-        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
-        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
-        avf.add(new AvailFlight("EK069", "15:00", "17:00","12,000","40,000"));
         //creating objects of the ShowAvailFlight and add it to html to get input 
         ShowAvailFlights FlightNoSelected= new ShowAvailFlights();
         model.addAttribute("FlightNo", FlightNoSelected);
