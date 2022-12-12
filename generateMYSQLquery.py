@@ -10,6 +10,7 @@ UPDATE allFlightNum SET numBookedSeats = <(prev + new) or > WHERE flightnum = "P
 # Get available flights
 SELECT flightnum from allFlightNum WHERE destTO = "Dubai" AND destFROM = "PUNE" AND DATE(flightDATE) >= "2021-08-01" AND numBookedSeat <= 34-<num of seats needed> ORDER BY flightDATE ASC;
 
+select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) = "2023-01-07" AND numAvailableSeats >= 5 ORDER BY price ASC;
 """
 
 flightname = "PK505"
