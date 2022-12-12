@@ -1,6 +1,6 @@
 package com.example.fms;
 
-public class SuperUser {
+public class SuperUser implements intface {
     private String Name;
     private String Username;
     private String Password;

@@ -5,15 +5,13 @@ public class AvailFlight
     private String Flightnums;
     private String DepartureTime;
     private String ArrivalTime;
-    private String EconomyPrice;
-    private String BusinessPrice;
-        public AvailFlight(String Flightnums,String DepartureTime,String ArrivalTime,String EconomyPrice,String BusinessPrice)
+    private String Price;
+        public AvailFlight(String Flightnums,String DepartureTime,String ArrivalTime,String Price)
         {
             this.Flightnums=Flightnums;
             this.DepartureTime=DepartureTime;
             this.ArrivalTime=ArrivalTime;
-            this.EconomyPrice=EconomyPrice;
-            this.BusinessPrice=BusinessPrice;
+            this.Price=Price;
 
         }
         public AvailFlight()
@@ -35,14 +33,6 @@ public class AvailFlight
         {
             ArrivalTime = arrivalTime;
         }
-        public void setBusinessPrice(String businessPrice)
-        {
-            BusinessPrice = businessPrice;
-        }
-        public String getBusinessPrice()
-        {
-            return BusinessPrice;
-        }
         public void setDepartureTime(String departureTime)
         {
             DepartureTime = departureTime;
@@ -51,11 +41,11 @@ public class AvailFlight
         {
             return DepartureTime;
         }
-        public void setEconomyPrice(String economyPrice)
+        public void setPrice(String price)
         {
-            EconomyPrice = economyPrice;
+            Price = price;
         }
         public String getEconomyPrice() {
-            return EconomyPrice;
+            return Price;
         }
 }
