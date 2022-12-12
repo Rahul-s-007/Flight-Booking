@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/seat_selection.css}">
+    <title>Seat Selection</title>
+</head>
+<body>
+    <header>
+        <div><a href="detail.html">Return</a></div>
+    </header>
+        <div class="seat-map" >
+            <div class="column">A</div>
+            <div class="column">B</div>
+            <div class="column">C</div>
+            <div class="column">D</div>
+            <!-- seats go here -->
+        </div>
+    <section>
+        <div class="display_box">
+            <div>
+                <div class="select" id="selected"></div>
+                <div class="select" id="available"></div>
+                <div class="select" id="booked"></div>
+            </div>
+            <div id="text">
+                <span class="select_text">Selected</span>
+                <span class="select_text">Availble</span>
+                <span class="select_text">Booked</span>
+            </div>
+            <div class="class">
+                <div id="class_name">Buisness Class</div>
+                <p id="seat_no">Seat No: </p>
+            </div>
+            <div id="buttons">
+                <a href="" class="button">Let's Fly</a> 
+            </div>
+        </div>
+    </section>
+    <script src="seat_selection.js"></script>
+</body>
+</html>
