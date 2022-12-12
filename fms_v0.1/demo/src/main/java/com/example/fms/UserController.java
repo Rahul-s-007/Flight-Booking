@@ -5,14 +5,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
 import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
-   private static ArrayList<AvailSeats> FilledSeats=new ArrayList<AvailSeats>();
-
+   private static ArrayList<AvailSeats> AvailSeats=new ArrayList<AvailSeats>();
+   // adding objects for call the queries and manage controller
+    testdb query=new testdb();
+    LoginUser manage=new LoginUser();
    @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
@@ -23,9 +24,12 @@ public class UserController {
    }
    @PostMapping("/")
    public  @ResponseBody void EndUserLogin(@ModelAttribute("loginuser") LoginUser loginuser, Model model,HttpServletResponse response) throws IOException{
-        //call the query to check wether the username and password is correct if not redirect to error page
-        //redirecting to the next page after getting the info from html
+        manage=loginuser;
+        String check = query.checkLogin(loginuser);
+        if(check.equals("Successful"))
         response.sendRedirect("/FlightInfo");
+        else
+        response.sendRedirect("/errorpage");
    }
    @GetMapping("/NewUser")
    public String StartNewUser(Model model){
@@ -37,9 +41,11 @@ public class UserController {
    }
    @PostMapping("/NewUser")
    public  @ResponseBody void EndNewUser(@ModelAttribute("newuser") NewUser newuser, Model model,HttpServletResponse response) throws IOException{
-        //call a query to add the new username and password
-        //redirecting to the next page after getting the info from html
+        String check = query.registerUser(newuser);
+        if(check.equals("User successfully added"))
         response.sendRedirect("/FlightInfo");
+        else
+        response.sendRedirect("/errorpage");
    }
     @GetMapping("/FlightInfo")
     public String StartFlightInfo(Model model) {
@@ -81,16 +87,16 @@ public class UserController {
     public String StartAvailableSeats(Model model)
     {
         // adding the seat that are filled(in form of String a Capital letter and a number next to it) to FilledSeats(for testing adding like else we will call a function to carry out the query)
-        FilledSeats.add(new AvailSeats("A2"));
-        FilledSeats.add(new AvailSeats("A3"));
-        FilledSeats.add(new AvailSeats("A4"));
-        FilledSeats.add(new AvailSeats("A5"));
-        FilledSeats.add(new AvailSeats("A6"));
+        AvailSeats.add(new AvailSeats("A2"));
+        AvailSeats.add(new AvailSeats("A3"));
+        AvailSeats.add(new AvailSeats("A4"));
+        AvailSeats.add(new AvailSeats("A5"));
+        AvailSeats.add(new AvailSeats("A6"));
         //creating objects of the SelectedSeats and add it to html to get input
        SelectedSeats ss = new SelectedSeats();
        model.addAttribute("SelectedSeats", ss);
        //adding FilledSeats for the html to get the seats alreay filled
-        model.addAttribute("FilledSeats", FilledSeats);
+        model.addAttribute("AvailSeats", AvailSeats);
         //the return statement call the html file to run(return statement and the html file name should be same)
         return "AvailableSeats";
     }
@@ -109,6 +115,19 @@ public class UserController {
     @PostMapping("/ShowingTheFinalSummary")
     public @ResponseBody void EndSummary(HttpServletResponse response)throws IOException
     {
-        response.sendRedirect("/UserLogin");
+        response.sendRedirect("/FlightInfo");
+    }
+    @GetMapping("/Manage")
+    public String StartManage(Model model)
+    {
+        ShowAvailFlights flightnum=new ShowAvailFlights();
+        model.addAttribute("flightnum", flightnum);
+        return "manage";
+    }
+    @PostMapping("/Manage")
+    public void EndManage(ShowAvailFlights flightnum,HttpServletResponse response)throws IOException
+    {
+        //add queries here to remove the seats from the data base
+        response.sendRedirect("/Manage");
     }
 }
