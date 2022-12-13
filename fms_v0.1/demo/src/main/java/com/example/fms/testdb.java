@@ -175,11 +175,12 @@ public class testdb
         }
     }
     
-    
-    public List<String> userBookedFlights(String username) // flightNO ob
+    // change Availseats here accordingly
+    public ArrayList<puthere> userBookedFlights(String username) // flightNO ob
     {
         // usr = ob.Username
         // select now();
+        ArrayList<AvailSeats> ans = new ArrayList<AvailSeats>();
         
         String query1 = "select current_date";
         String currentDATE="";
@@ -193,15 +194,19 @@ public class testdb
             System.out.println("DB Error");
         }
         
-        String query2 = String.format("Select FlightsBooked from %s where DATE(flightDate) > \"%s\"",username,currentDATE);
+        String query2 = String.format("Select * from %s where DATE(flightDate) > \"%s\"",username,currentDATE);
         
-        List<String> ans = new ArrayList<String>();
         try
         {
             rs = st.executeQuery(query2);
+            int x = 0;
             while(rs.next())
             {
-                ans.add(rs.getString(1));
+                String query3 = String.format("Select destTO, destFROM, flightDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
+                AvailSeats obj=new AvailSeats(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3));
+                ans.add(obj);
+                x++;
+                //ans1.add(rs.getString(1));
             }
             return ans;
         }
