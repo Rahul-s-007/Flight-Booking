@@ -1,34 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-<meta charset="ISO-8859-1">
-<title>Seat Selection</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/AvailableSeats.css}">
+    <title>Seat Selection</title>
 </head>
 <body>
-<div>
-    <h1>Seat Selection</h1>
-<!-- <span th:text=""></span> -->
-    <ul th:each="num: ${FilledSeats}">
-        <li th:text="${num.Seat}"></li>
-    </ul> 
-
-    <!--
-    <form action="#" th:action="@{/FlightInfo}" method="post" th:object="${Flightinfo}">
-        <label>From:</label>
-        <input type="text" th:field="*{from}" /><br/>
- 
-        <label>To:</label>
-        <input type="text" th:field="*{to}" /><br/>
-
-        <label>Date:</label>
-        <input type="date" th:field="*{date}" /><br/>
- 
-        <label>Numbe of passengers</label>
-        <input type="number" th:field="*{passengers}"/><br/>
-        <button type="submit">Register</button>    
-    </form>
-    -->
-    <button type="submit">submit</button>
-</div>
+    <header>
+        <div><a href="detail.html">Return</a></div>
+    </header>
+        <div class="seat-map" >
+            <div class="column">A</div>
+            <div class="column">B</div>
+            <div class="column">C</div>
+            <div class="column">D</div>
+            <!-- seats go here -->
+        </div>
+    <section>
+        <div class="display_box">
+            <div>
+                <div class="select" id="selected"></div>
+                <div class="select" id="available"></div>
+                <div class="select" id="booked"></div>
+            </div>
+            <div id="text">
+                <span class="select_text">Selected</span>
+                <span class="select_text">Availble</span>
+                <span class="select_text">Booked</span>
+            </div>
+            <div class="class">
+                <div id="class_name">Buisness Class</div>
+                <p id="seat_no">Seat No: </p>
+            </div>
+            <div id="buttons">
+                <a href="" class="button">Let's Fly</a> 
+            </div>
+        </div>
+    </section>
+    <script src="AvailableSeats.js"></script>
 </body>
 </html>
