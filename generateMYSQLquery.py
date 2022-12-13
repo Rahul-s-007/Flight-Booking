@@ -11,19 +11,20 @@ UPDATE allFlightNum SET numBookedSeats = <(prev + new) or > WHERE flightnum = "P
 SELECT flightnum from allFlightNum WHERE destTO = "Dubai" AND destFROM = "PUNE" AND DATE(flightDATE) >= "2021-08-01" AND numBookedSeat <= 34-<num of seats needed> ORDER BY flightDATE ASC;
 
 select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum where destTO = "Pune" AND destFROM = "Dubai" AND DATE(flightDATE) = "2023-01-07" AND numAvailableSeats >= 5 ORDER BY price ASC;
+
+#insert into EK507 values("x1",0,null);
+#insert into EK507 values("x2",0,null);
+#insert into EK507 values("x3",0,null);
+#insert into EK507 values("y1",0,null);
+#insert into EK507 values("y2",0,null);
+#insert into EK507 values("y3",0,null);
+
 """
 
-flightname = "PK505"
+flightname = "EK002"
 
 s ="""
 create table EK507(seatName varchar(3), seatTaken int(2), bookedBy varchar(30));
-insert into EK507 values("x1",0,null);
-insert into EK507 values("x2",0,null);
-insert into EK507 values("x3",0,null);
-
-insert into EK507 values("y1",0,null);
-insert into EK507 values("y2",0,null);
-insert into EK507 values("y3",0,null);
 
 insert into EK507 values("a1",0,null);
 insert into EK507 values("a2",0,null);
