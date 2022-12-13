@@ -155,7 +155,7 @@ public class testdb
     {
         // flno = ob.flightnum;
         //select seatName from EK507 where seatTaken = 0;
-        String query = String.format("select seatName from %s where seatTaken = 0",flightNO);
+        String query = String.format("select seatName from %s where seatTaken = 1",flightNO);
         ArrayList<AvailSeats> ans = new ArrayList<AvailSeats>();
         
         try
@@ -176,7 +176,7 @@ public class testdb
     }
     
     // change Availseats here accordingly
-    public ArrayList<puthere> userBookedFlights(String username) // flightNO ob
+    public ArrayList<userBookedSeats> userBookedFlights(String username) // flightNO ob
     {
         // usr = ob.Username
         // select now();
