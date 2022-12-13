@@ -225,7 +225,7 @@ public class testdb
         {
             rs = st.executeQuery(query);
             rs.next();
-            ans = Integer.parseInt(rs.getString(1))
+            ans = Integer.parseInt(rs.getString(1));
         }
         catch(SQLException ex)
         {
