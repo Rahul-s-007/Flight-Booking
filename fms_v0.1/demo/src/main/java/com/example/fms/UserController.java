@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
-    FromTo fromto = new FromTo();
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> AvailSeats=new ArrayList<AvailSeats>();
    // adding objects for call the queries and manage controller
     testdb query=new testdb();
     LoginUser manage=new LoginUser();
+    FromTo fromto = new FromTo();
    @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
@@ -44,7 +44,11 @@ public class UserController {
    public  @ResponseBody void EndNewUser(@ModelAttribute("newuser") NewUser newuser, Model model,HttpServletResponse response) throws IOException{
         String check = query.registerUser(newuser);
         if(check.equals("User successfully added"))
-        response.sendRedirect("/FlightInfo");
+        {
+            response.sendRedirect("/FlightInfo");
+            LoginUser temp=new LoginUser(newuser.getUsername(),newuser.getPassword());
+            manage=temp;
+        }
         else
         response.sendRedirect("/errorpage");
    }
@@ -79,19 +83,13 @@ public class UserController {
     @PostMapping("/ShowAvailableFlight")
     public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response)throws IOException
     {
-        //call query to get filled seats 
+        AvailSeats=query.availableSeats(FlightNoSelected.getFlightNo());
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/AvailableSeats");
     }
     @GetMapping("/AvailableSeats")
     public String StartAvailableSeats(Model model)
     {
-        // adding the seat that are filled(in form of String a Capital letter and a number next to it) to FilledSeats(for testing adding like else we will call a function to carry out the query)
-        AvailSeats.add(new AvailSeats("A2"));
-        AvailSeats.add(new AvailSeats("A3"));
-        AvailSeats.add(new AvailSeats("A4"));
-        AvailSeats.add(new AvailSeats("A5"));
-        AvailSeats.add(new AvailSeats("A6"));
         //creating objects of the SelectedSeats and add it to html to get input
        SelectedSeats ss = new SelectedSeats();
        model.addAttribute("SelectedSeats", ss);
@@ -120,6 +118,7 @@ public class UserController {
     @GetMapping("/Manage")
     public String StartManage(Model model)
     {
+        
         ShowAvailFlights flightnum=new ShowAvailFlights();
         model.addAttribute("flightnum", flightnum);
         return "manage";
