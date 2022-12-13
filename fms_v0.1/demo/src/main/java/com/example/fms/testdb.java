@@ -11,6 +11,7 @@ public class testdb
     private Connection con;
     private Statement st;
     private ResultSet rs;
+    private ResultSet rs1;
 
     //Constructor
     public testdb()
