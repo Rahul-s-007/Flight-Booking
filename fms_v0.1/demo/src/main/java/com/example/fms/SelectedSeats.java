@@ -23,7 +23,7 @@ public class SelectedSeats {
         StringTokenizer str = new StringTokenizer(Selstring, " ");
         while(str.hasMoreTokens())
         {
-            SelectedSeats.add(str.nextToken());
+            SelectedSeats.add(str.nextToken().toLowerCase().trim());
         }
         return SelectedSeats;
    }
