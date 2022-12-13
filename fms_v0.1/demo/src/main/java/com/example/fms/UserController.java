@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Controller
 public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
+    FromTo fromto = new FromTo();
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> AvailSeats=new ArrayList<AvailSeats>();
    // adding objects for call the queries and manage controller
@@ -58,6 +59,8 @@ public class UserController {
     @PostMapping(path="/FlightInfo")
     public @ResponseBody void EndFlightInfo(@ModelAttribute("Flightinfo") FlightInfoUser Flightinfo, Model model,HttpServletResponse response)throws IOException {
         avf=query.getAvailableFlights(Flightinfo);
+        fromto.setFrom(Flightinfo.getFrom());
+        fromto.setTo(Flightinfo.getTo());
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/ShowAvailableFlight");
     }
@@ -66,6 +69,7 @@ public class UserController {
     {
         //creating objects of the ShowAvailFlight and add it to html to get input 
         ShowAvailFlights FlightNoSelected= new ShowAvailFlights();
+        model.addAttribute("fromto", fromto);
         model.addAttribute("FlightNo", FlightNoSelected);
         //adding avf for the html to get the available flights
         model.addAttribute("avf", avf);

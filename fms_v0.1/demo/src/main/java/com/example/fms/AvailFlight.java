@@ -6,6 +6,7 @@ public class AvailFlight
     private String DepartureTime;
     private String ArrivalTime;
     private String Price;
+
         public AvailFlight(String Flightnums,String DepartureTime,String ArrivalTime,String Price)
         {
             this.Flightnums=Flightnums;
@@ -45,7 +46,7 @@ public class AvailFlight
         {
             Price = price;
         }
-        public String getEconomyPrice() {
-            return Price;
+        public String getPrice() {
+            return "AED "+Price;
         }
 }
