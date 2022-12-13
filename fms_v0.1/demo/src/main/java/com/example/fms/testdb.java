@@ -151,19 +151,20 @@ public class testdb
     
     
     
-    public List<String> availableSeats(String flightNO) // flightNO ob
+    public ArrayList<AvailSeats> availableSeats(String flightNO) // flightNO ob
     {
         // flno = ob.flightnum;
         //select seatName from EK507 where seatTaken = 0;
         String query = String.format("select seatName from %s where seatTaken = 0",flightNO);
-        List<String> ans = new ArrayList<String>();
+        ArrayList<AvailSeats> ans = new ArrayList<AvailSeats>();
         
         try
         {
             rs = st.executeQuery(query);
             while(rs.next())
             {
-                ans.add(rs.getString(1));
+                AvailSeats obj=new AvailSeats(rs.getString(1));
+                ans.add(obj);
             }
             return ans;
         }
