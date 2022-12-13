@@ -217,15 +217,27 @@ public class testdb
         }
     }
     
-    public List<String> getSeatPrice(String flightNo)
+    public int getSeatPrice(String flightNo)
     {
-        List<String> ans = new ArrayList<String>();
+        int ans = 0;
+        String query = String.format("Select price from allflightnum where flightnum = \"%s\"",flightNo);
+        try
+        {
+            rs = st.executeQuery(query);
+            rs.next();
+            ans = Integer.parseInt(rs.getString(1))
+        }
+        catch(SQLException ex)
+        {
+            System.out.println("DB Error");
+            return ans;
+        }
+        //List<String> ans = new ArrayList<String>();
         // select ecoPrice from allflightnum where flightnum = <flightNo>;
         // economy = output;
         // buissness = output*1.5;
         return ans; // return [eco,biss]
     }
-    
     
     // Update seats which were booked in DB
     public void addSeatBooked(String seat, String flightNO, String username)
@@ -250,15 +262,44 @@ public class testdb
         {
             addSeatBooked(itr.next(), flightNO, username);
         }
+        updateAvailableSeats(flightNO);
     }
     
     
     // Update seats which were cancled in DB
-    public void removeSeatBooked(String flightNO)
+    public void removeSeatBooked(String flightNO, String seat)
     {
-        
+        String query = String.format("Update %s SET bookedBy = Null, seatTaken = 0 where seatName = \"%s\"",flightNO ,seat);
+        try 
+        {
+            st.executeUpdate(query);
+        } 
+        catch(SQLException e) 
+        {
+            System.out.println("DB Error");
+        }
     }
     
+    public void arraySeatsRemove(String flightNO, String username)
+    {
+        // select seatName from pk505 where bookedBy = "rahuls";
+        String query = String.format("Select seatName from %s where bookedBy = \"%s\"",flightNO,username);
+        try
+        {
+            rs = st.executeQuery(query);
+            while(rs.next())
+            {
+                removeSeatBooked(flightNO, rs.getString(1));
+            }
+        }
+        catch(SQLException e) 
+        {
+            System.out.println("DB Error");
+        }
+        updateAvailableSeats(flightNO);
+    }
+
+
     // Update Available Seats
     public void updateAvailableSeats(String flightNO)
     {
@@ -300,6 +341,5 @@ public class testdb
     {
         // call remove seats and userbooked seats
     }
-    
     
 }
