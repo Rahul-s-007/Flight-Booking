@@ -176,11 +176,11 @@ public class testdb
     }
     
     // change Availseats here accordingly
-    public ArrayList<userBookedSeats> userBookedFlights(String username) // flightNO ob
+    public ArrayList<BookedFlight> userBookedFlights(String username) // flightNO ob
     {
         // usr = ob.Username
         // select now();
-        ArrayList<AvailSeats> ans = new ArrayList<AvailSeats>();
+        ArrayList<BookedFlight> ans = new ArrayList<BookedFlight>();
         
         String query1 = "select current_date";
         String currentDATE="";
@@ -199,14 +199,13 @@ public class testdb
         try
         {
             rs = st.executeQuery(query2);
-            int x = 0;
             while(rs.next())
             {
                 String query3 = String.format("Select destTO, destFROM, flightDATE, arrivalDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
+                rs1= st.executeQuery(query3);
                 // flightno,to,from,depature,arrival
-                AvailSeats obj=new AvailSeats(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
+                BookedFlight obj=new BookedFlight(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
                 ans.add(obj);
-                x++;
                 //ans1.add(rs.getString(1));
             }
             return ans;
