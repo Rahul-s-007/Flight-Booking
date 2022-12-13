@@ -27,6 +27,7 @@
 
                 <p id="password">Password</p>
                 <ion-icon name="lock-closed-sharp" class="icon"></ion-icon>
+                <button onclick="changeInputType()" id="eye"><ion-icon name="eye-outline"></ion-icon></button>
                 <input type="password" id="password_box" th:field="*{Password}" autocomplete="off" required>
                 
             <div class="link">
@@ -38,5 +39,18 @@
             <button class="button" type="submit"><p>LET'S FLY</p></button>
         </form>
     </div>
+    <script>
+        function changeInputType() 
+        {
+          var passwordInput = document.getElementById("password_box");
+          if (passwordInput.type === "password")
+          {
+            passwordInput.type = "text";
+          } else 
+          {
+            passwordInput.type = "password";
+          }
+        }
+      </script>
 </body>
 </html>

@@ -133,13 +133,22 @@ form
     height: 50px;
     margin-top: 5px;
 }
+#eye
+{
+    position: relative;
+    
+    top: 43px;
+    left: 250px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
 input
 {
     font-family: 'Source Sans Pro';
     font-style: normal;
     font-weight: 600;
     font-size: 20px;
-    line-height: 125%;
     outline: none;
     padding: 10px;
     padding-left: 30px;
@@ -175,12 +184,12 @@ input
     right: 0;
     margin: 10%;
 }
-/* button:hover
+button:hover
 {
-    transition: ease-in-out 0.8s;
+    transition: ease-in-out 0.3s;
     color: #114AA0;
-    background-color: #2692D1;
-} */
+    background-color: #2692d1cf;
+}
 .button p
 {
     font-family: 'Source Sans Pro';
