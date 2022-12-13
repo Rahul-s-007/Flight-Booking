@@ -155,7 +155,7 @@ public class testdb
     {
         // flno = ob.flightnum;
         //select seatName from EK507 where seatTaken = 0;
-        String query = String.format("select seatName from %s where seatTaken = 0",flightNO);
+        String query = String.format("select seatName from %s where seatTaken = 1",flightNO);
         ArrayList<AvailSeats> ans = new ArrayList<AvailSeats>();
         
         try
@@ -176,7 +176,7 @@ public class testdb
     }
     
     // change Availseats here accordingly
-    public ArrayList<puthere> userBookedFlights(String username) // flightNO ob
+    public ArrayList<userBookedSeats> userBookedFlights(String username) // flightNO ob
     {
         // usr = ob.Username
         // select now();
@@ -202,8 +202,9 @@ public class testdb
             int x = 0;
             while(rs.next())
             {
-                String query3 = String.format("Select destTO, destFROM, flightDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
-                AvailSeats obj=new AvailSeats(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3));
+                String query3 = String.format("Select destTO, destFROM, flightDATE, arrivalDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
+                // flightno,to,from,depature,arrival
+                AvailSeats obj=new AvailSeats(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
                 ans.add(obj);
                 x++;
                 //ans1.add(rs.getString(1));
