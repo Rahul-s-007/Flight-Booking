@@ -30,13 +30,17 @@
                 <span class="select_text">Availble</span>
                 <span class="select_text">Booked</span>
             </div>
-            <div class="class">
-                <div id="class_name">Buisness Class</div>
-                <p id="seat_no">Seat No: </p>
-            </div>
-            <div id="buttons">
-                <a href="" class="button">Let's Fly</a> 
-            </div>
+            <form action="" method="post" th:object="${SelectedSeats}">
+                <div class="class">
+                    <div id="class_name">Buisness Class</div>
+                    <p id="seat_no">Seat No: </p>
+                    <input type="hidden" th:field="*{Selstring}" id="selectedstring"/>
+                </div>
+                <div id="buttons">
+                    <!-- <a href="" class="button">Let's Fly</a>  -->
+                    <button type="submit" class="button">Let's Fly</button>
+                </div>
+             </form>
         </div>
     </section>
     <script src="AvailableSeats.js"></script>

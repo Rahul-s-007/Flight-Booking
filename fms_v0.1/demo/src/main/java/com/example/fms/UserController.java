@@ -15,6 +15,7 @@ public class UserController {
     testdb query=new testdb();
     LoginUser manage=new LoginUser();
     FromTo fromto = new FromTo();
+    SelectedSeats selseat = new SelectedSeats();
    @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
@@ -102,12 +103,14 @@ public class UserController {
     public @ResponseBody void EndAvailableSeats(@ModelAttribute("SelectedSeats") SelectedSeats ss, Model model,HttpServletResponse response)throws IOException
     {
         //Add selected seats to db
+        selseat = ss;
         response.sendRedirect("/ShowingTheFinalSummary");
     }
     @GetMapping("/ShowingTheFinalSummary")
     public String StartSummary(Model model)
     {
         //will add any attributes if needed
+        model.addAttribute("seatselected", selseat);
         return "Summary";
     }
     @PostMapping("/ShowingTheFinalSummary")

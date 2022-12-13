@@ -10,6 +10,7 @@ let selectedSeats = 0;
 // get the seat map container
 const seatMap = document.querySelector('.seat-map');
 
+var selstring = "";
 // create the seats
 for (let row = 0; row < 7; row++) 
 {
@@ -50,6 +51,8 @@ for (let row = 0; row < 7; row++)
         console.log('Seat clicked:', seat.id);
         const seat_no = document.getElementById("seat_no")
         seat_no.innerHTML += seat.id + " ";
+        selstring+=seat.id+" ";
+        document.getElementById("selectedstring").value = selstring;
         selectedSeats++;
       } 
       else
@@ -67,6 +70,7 @@ for (let row = 0; row < 7; row++)
 }
 // create the reselect button
 const reselectButton = document.createElement('button');
+reselectButton.type="button";
 // set the text on the button
 reselectButton.innerText = 'Reselect Seats';
 // add a click event listener to the button
@@ -85,4 +89,3 @@ reselectButton.addEventListener('click', () =>
 // add the reselect button to the page
 var buttons = document.getElementById('buttons');
 buttons.appendChild(reselectButton);
-

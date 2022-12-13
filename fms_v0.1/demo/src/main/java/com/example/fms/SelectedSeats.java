@@ -1,19 +1,31 @@
 package com.example.fms;
 import java.util.ArrayList;
+import java.util.StringTokenizer;
 public class SelectedSeats {
-    private ArrayList <String> SelectedSeats= new ArrayList<String>();
-    public SelectedSeats(ArrayList<String> ss)
+    private static ArrayList <String> SelectedSeats= new ArrayList<String>();
+    private String Selstring;
+    public SelectedSeats(String Selstring)
     {
-        SelectedSeats  = ss;
+        this.Selstring = Selstring;
     }
     public SelectedSeats()
     {
         
     }
-    public void setSelectedSeats(ArrayList<String> selectedSeats) {
-        SelectedSeats = selectedSeats;
-    }
-    public ArrayList<String> getSelectedSeats() {
+   public String getSelstring() {
+       return Selstring;
+   }
+   public void setSelstring(String Selstring) {
+       this.Selstring = Selstring;
+   }
+   public ArrayList<String> convertseats()
+   {
+        StringTokenizer str = new StringTokenizer(Selstring, " ");
+        while(str.hasMoreTokens())
+        {
+            SelectedSeats.add(str.nextToken());
+        }
         return SelectedSeats;
-    }
+   }
+
 }
