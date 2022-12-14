@@ -312,7 +312,7 @@ public class testdb
         }
         catch(SQLException e)
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error Get Seat Count");
         }
 
         String query2 = String.format("UPDATE allflightnum SET numAvailableSeats = %d WHERE flightnum = \"%s\"",numSeats,flightNO);
@@ -323,7 +323,7 @@ public class testdb
         }
         catch(SQLException ex)
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error Update Seat Count");
         }
     }
     
