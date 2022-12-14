@@ -32,7 +32,7 @@ public class testdb
     public int isExists(String qtemp)
     {
         String query = String.format("select exists(%s) as res",qtemp);
-        System.out.println(query);
+        // System.out.println(query);
         try
         {
             rs = st.executeQuery(query);
@@ -143,7 +143,7 @@ public class testdb
             catch(SQLException ex)
             {
                 System.out.println("DB Error");
-                return "DB Error";
+                return "DB Error Create New User";
             }
         }
         //if(username exists then return username exists else register user)
@@ -170,7 +170,7 @@ public class testdb
         }
         catch(SQLException ex)
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error Available Seats");
             return ans;
         }
     }
@@ -191,31 +191,42 @@ public class testdb
         }
         catch(SQLException ex)
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error current date");
         }
         
         String query2 = String.format("Select * from %s where DATE(flightDate) > \"%s\"",username,currentDATE);
         
-        try
+        int recordavail = isExists(query2);
+        if(recordavail == 1)
         {
-            rs = st.executeQuery(query2);
-            while(rs.next())
+            try
             {
-                String query3 = String.format("Select destTO, destFROM, flightDATE, arrivalDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
-                rs1= st.executeQuery(query3);
-                // flightno,to,from,depature,arrival
-                BookedFlight obj=new BookedFlight(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
-                ans.add(obj);
-                //ans1.add(rs.getString(1));
+                rs = st.executeQuery(query2);
+                while(rs.next())
+                {
+                    String query3 = String.format("Select destTO, destFROM, flightDATE, arrivalDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
+                    rs1= st.executeQuery(query3);
+                    // flightno,to,from,depature,arrival
+                    BookedFlight obj=new BookedFlight(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
+                    ans.add(obj);
+                    //ans1.add(rs.getString(1));
+                }
+                return ans;
             }
-            return ans;
+            catch(SQLException ex)
+            {
+                System.out.println("DB Error");
+                return ans;
+            }
         }
-        catch(SQLException ex)
+        else
         {
-            System.out.println("DB Error");
+            System.out.println("No flights booked by user");
             return ans;
         }
     }
+
+    // get seat price of a flight
     public int getSeatPrice(String flightNo)
     {
         int ans = 0;
@@ -228,7 +239,7 @@ public class testdb
         }
         catch(SQLException ex)
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error get price");
             return ans;
         }
         //List<String> ans = new ArrayList<String>();
@@ -249,7 +260,7 @@ public class testdb
         } 
         catch(SQLException e) 
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error add seat = 1");
         }
     }
     
@@ -275,10 +286,11 @@ public class testdb
         } 
         catch(SQLException e) 
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error remove seat");
         }
     }
     
+    // pases all the seats booked by user to remove them
     public void arraySeatsRemove(String flightNO, String username)//done
     {
         // select seatName from pk505 where bookedBy = "rahuls";
@@ -293,7 +305,7 @@ public class testdb
         }
         catch(SQLException e) 
         {
-            System.out.println("DB Error");
+            System.out.println("DB Error arr seat remove");
         }
         updateAvailableSeats(flightNO);
     }
