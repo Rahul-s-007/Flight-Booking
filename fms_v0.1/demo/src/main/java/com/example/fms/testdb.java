@@ -124,7 +124,7 @@ public class testdb
         String pass = ob.getPassword();
         
         String query1 = String.format("Insert into userlogin values(\"%s\", \"%s\", \"%s\")",usr,pass,name);
-        String query2 = String.format("Create table %s (FlightsBooked varchar(10), flightDate datetime)");
+        String query2 = String.format("Create table %s (FlightsBooked varchar(10), flightDate datetime)",usr);
         
         String qchk = String.format("select * from userlogin where username = \"%s\"",usr);
         int recordavail = isExists(qchk);
@@ -182,19 +182,23 @@ public class testdb
         // select now();
         ArrayList<BookedFlight> ans = new ArrayList<BookedFlight>();
         
-        String query1 = "select current_date";
-        String currentDATE="";
+        String query1 = "select current_date as cd";
+        String currDATE="";
         try
         {
             rs = st.executeQuery(query1);
-            currentDATE = rs.getString(1);
+            rs.next();
+            currDATE = rs.getString(1); 
+            //currDATE = rs.getDate("cd").toString();
+            //System.out.println(currDATE);
         }
         catch(SQLException ex)
         {
             System.out.println("DB Error current date");
         }
         
-        String query2 = String.format("Select * from %s where DATE(flightDate) > \"%s\"",username,currentDATE);
+        String query2 = String.format("Select * from %s where DATE(flightDate) > \"%s\"",username,currDATE);
+        System.out.println(query2);
         
         int recordavail = isExists(query2);
         if(recordavail == 1)
