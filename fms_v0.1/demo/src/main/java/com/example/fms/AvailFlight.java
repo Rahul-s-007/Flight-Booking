@@ -49,4 +49,8 @@ public class AvailFlight
         public String getPrice() {
             return "AED "+Price;
         }
+        public int getprice()
+        {
+            return (Integer.valueOf(Price));
+        }
 }

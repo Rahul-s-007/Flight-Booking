@@ -2,6 +2,7 @@ package com.example.fms;
 import org.springframework.ui.Model;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +12,15 @@ public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
    private static ArrayList<AvailSeats> AvailSeats=new ArrayList<AvailSeats>();
+   private static ArrayList<BookedFlight> userbookedflights=new ArrayList<BookedFlight>();
+   private static ArrayList<String> seatsselec=new ArrayList<String>();
    // adding objects for call the queries and manage controller
     testdb query=new testdb();
     LoginUser manage=new LoginUser();
     FromTo fromto = new FromTo();
     SelectedSeats selseat = new SelectedSeats();
+    ShowAvailFlights flightno=new ShowAvailFlights();
+    Date dateselected;
    @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
@@ -63,6 +68,7 @@ public class UserController {
     }
     @PostMapping(path="/FlightInfo")
     public @ResponseBody void EndFlightInfo(@ModelAttribute("Flightinfo") FlightInfoUser Flightinfo, Model model,HttpServletResponse response)throws IOException {
+        dateselected=Flightinfo.getDate();
         avf=query.getAvailableFlights(Flightinfo);
         fromto.setFrom(Flightinfo.getFrom());
         fromto.setTo(Flightinfo.getTo());
@@ -85,6 +91,7 @@ public class UserController {
     public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response)throws IOException
     {
         AvailSeats=query.availableSeats(FlightNoSelected.getFlightNo());
+        flightno=FlightNoSelected;
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/AvailableSeats");
     }
@@ -104,32 +111,34 @@ public class UserController {
     {
         //Add selected seats to db
         selseat = ss;
+        seatsselec=selseat.convertseats();
         response.sendRedirect("/ShowingTheFinalSummary");
     }
     @GetMapping("/ShowingTheFinalSummary")
     public String StartSummary(Model model)
     {
-        //will add any attributes if needed
-        model.addAttribute("seatselected", selseat);
+        int tp= selseat.getNumofseats()*query.getSeatPrice(flightno.getFlightNo());
+        summary sum=new summary(seatsselec,tp,fromto.getTo(),fromto.getFrom(),dateselected);
+        model.addAttribute("Summary",sum);
         return "Summary";
     }
     @PostMapping("/ShowingTheFinalSummary")
     public @ResponseBody void EndSummary(HttpServletResponse response)throws IOException
     {
+        query.arraySeatsBooked(flightno.getFlightNo(),seatsselec,manage.getUsername());
         response.sendRedirect("/FlightInfo");
     }
     @GetMapping("/Manage")
     public String StartManage(Model model)
     {
-        
-        ShowAvailFlights flightnum=new ShowAvailFlights();
-        model.addAttribute("flightnum", flightnum);
+        userbookedflights=query.userBookedFlights(manage.getUsername());
+        model.addAttribute("BookedFlights", userbookedflights);
         return "manage";
     }
     @PostMapping("/Manage")
     public void EndManage(ShowAvailFlights flightnum,HttpServletResponse response)throws IOException
     {
-        //add queries here to remove the seats from the data base
+        query.arraySeatsRemove(flightnum.getFlightNo(),manage.getUsername());
         response.sendRedirect("/Manage");
     }
 }

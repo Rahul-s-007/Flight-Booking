@@ -56,7 +56,7 @@ public class testdb
     }
     
     
-    public ArrayList<AvailFlight> getAvailableFlights(FlightInfoUser ob)
+    public ArrayList<AvailFlight> getAvailableFlights(FlightInfoUser ob)//done
     {
         Date date = ob.getDate();
         String to = ob.getTo();
@@ -97,7 +97,7 @@ public class testdb
     
     
     // Check if user login credentials are correct
-    public String checkLogin(LoginUser ob)
+    public String checkLogin(LoginUser ob)//done
     {
         String usr = ob.getUsername();
         String pass = ob.getPassword();
@@ -117,7 +117,7 @@ public class testdb
     }
     
     // Register data of new user
-    public String registerUser(NewUser ob)
+    public String registerUser(NewUser ob)//done
     {
         String name = ob.getName();
         String usr = ob.getUsername();
@@ -151,7 +151,7 @@ public class testdb
     
     
     
-    public ArrayList<AvailSeats> availableSeats(String flightNO) // flightNO ob
+    public ArrayList<AvailSeats> availableSeats(String flightNO) // flightNO ob done
     {
         // flno = ob.flightnum;
         //select seatName from EK507 where seatTaken = 0;
@@ -176,7 +176,7 @@ public class testdb
     }
     
     // change Availseats here accordingly
-    public ArrayList<BookedFlight> userBookedFlights(String username) // flightNO ob
+    public ArrayList<BookedFlight> userBookedFlights(String username) // flightNO ob done
     {
         // usr = ob.Username
         // select now();
@@ -216,7 +216,6 @@ public class testdb
             return ans;
         }
     }
-    
     public int getSeatPrice(String flightNo)
     {
         int ans = 0;
@@ -240,7 +239,7 @@ public class testdb
     }
     
     // Update seats which were booked in DB
-    public void addSeatBooked(String seat, String flightNO, String username)
+    public void addSeatBooked(String seat, String flightNO, String username)//done
     {
         // update ek507 set bookedBy = <username>, seatTaken = 1 where seatName = ;
         String query = String.format("Update %s SET bookedBy = \"%s\", seatTaken = 1 where seatName = \"%s\"",flightNO ,username ,seat);
@@ -255,7 +254,7 @@ public class testdb
     }
     
     // calls above function for each seat in array list
-    public void arraySeatsBooked(String flightNO, List<String> seats, String username)
+    public void arraySeatsBooked(String flightNO, List<String> seats, String username)//done
     {
         Iterator<String> itr = seats.iterator();
         while(itr.hasNext())
@@ -267,7 +266,7 @@ public class testdb
     
     
     // Update seats which were cancled in DB
-    public void removeSeatBooked(String flightNO, String seat)
+    public void removeSeatBooked(String flightNO, String seat)//done
     {
         String query = String.format("Update %s SET bookedBy = Null, seatTaken = 0 where seatName = \"%s\"",flightNO ,seat);
         try 
@@ -280,7 +279,7 @@ public class testdb
         }
     }
     
-    public void arraySeatsRemove(String flightNO, String username)
+    public void arraySeatsRemove(String flightNO, String username)//done
     {
         // select seatName from pk505 where bookedBy = "rahuls";
         String query = String.format("Select seatName from %s where bookedBy = \"%s\"",flightNO,username);
@@ -301,7 +300,7 @@ public class testdb
 
 
     // Update Available Seats
-    public void updateAvailableSeats(String flightNO)
+    public void updateAvailableSeats(String flightNO)//done
     {
         // select count(seatName) from EK507 where seatTaken = 0; 
         int numSeats = 0;
@@ -328,7 +327,7 @@ public class testdb
         }
     }
     
-    
+    /* 
     public void userBookedSeats()
     {
         // SET SQL_SAFE_UPDATES = 0;
@@ -341,5 +340,5 @@ public class testdb
     {
         // call remove seats and userbooked seats
     }
-    
+    */
 }
