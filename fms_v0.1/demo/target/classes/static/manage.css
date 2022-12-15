@@ -128,6 +128,7 @@ section
 .box img
 {
     border-radius: 10px 0px 0px 10px;
+    width: 250px;
 }
 .cities
 {
@@ -160,4 +161,28 @@ section
     font-weight: 600;
     font-size: 18px;
     color: #000000;
+}
+.box button
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20%;
+    position: relative;
+    top: 70%;
+    left: 5%;
+    background: transparent;
+    border: 2px solid rgba(255, 0, 0, 0.45);
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Source Sans Pro';
+    font-weight: 600;
+    font-size: 14px;
+    padding: 10px;
+    transition: .3s;
+}
+.box button:hover
+{
+    background: rgba(255, 0, 0, 0.635);
+    color: white;
 }
