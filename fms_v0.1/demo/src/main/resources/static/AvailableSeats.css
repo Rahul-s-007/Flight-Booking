@@ -130,7 +130,7 @@ section .display_box
     font-family: 'Source Sans Pro';
     font-weight: 700;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.5);    
+    color: rgba(0, 0, 0, 0.7);    
     padding: 10px;
 }
 #seat_no
@@ -192,6 +192,7 @@ button:hover
 #buttons
 {
     display: flex;
+    margin: 5px;
     position: relative;
     width: 100%;
     justify-content: space-around;
@@ -216,8 +217,8 @@ button:hover
     height: 25em;
     position: absolute;
     top: 60%;
-    left: 15%;
-    padding: 4%;
+    left: 10%;
+    padding: 2%;
     padding-bottom: 0;
     transform: translateY(-50%);
     z-index: 1;

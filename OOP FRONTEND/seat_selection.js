@@ -56,8 +56,17 @@ for (let row = 0; row < 7; row++)
       {
         // if the seat is not occupied and is already selected,
         // remove the 'selected' class and decrement the selected seats counter
-        seat.classList.remove('selected');
+
+        const seats = document.querySelectorAll('.seat');
+        // remove the 'selected' class from each seat
+        seats.forEach(seat => seat.classList.remove('selected'));
+      
         seat_no.innerHTML = "Seat No:";
+        selectedSeats = 0;
+
+        // seat.classList.remove('selected');
+        // seat_no.innerHTML = "Seat No:";
+        // seat_no.innerHTML = seat.id + " " + seat_no.innerHTML;
         selectedSeats--;
       }
     });

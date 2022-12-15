@@ -10,7 +10,6 @@ let selectedSeats = 0;
 // get the seat map container
 const seatMap = document.querySelector('.seat-map');
 
-var selstring = "";
 // create the seats
 for (let row = 0; row < 7; row++) 
 {
@@ -51,16 +50,22 @@ for (let row = 0; row < 7; row++)
         console.log('Seat clicked:', seat.id);
         const seat_no = document.getElementById("seat_no")
         seat_no.innerHTML += seat.id + " ";
-        selstring+=seat.id+" ";
-        document.getElementById("selectedstring").value = selstring;
         selectedSeats++;
       } 
       else
       {
         // if the seat is not occupied and is already selected,
         // remove the 'selected' class and decrement the selected seats counter
-        seat.classList.remove('selected');
+
+        const seats = document.querySelectorAll('.seat');
+        // remove the 'selected' class from each seat
+        seats.forEach(seat => seat.classList.remove('selected'));
+      
         seat_no.innerHTML = "Seat No:";
+        selectedSeats = 0;
+        // seat.classList.remove('selected');
+        // seat_no.innerHTML = "Seat No:";
+        // seat_no.innerHTML = seat.id + " " + seat_no.innerHTML;
         selectedSeats--;
       }
     });
@@ -70,9 +75,9 @@ for (let row = 0; row < 7; row++)
 }
 // create the reselect button
 const reselectButton = document.createElement('button');
-reselectButton.type="button";
 // set the text on the button
 reselectButton.innerText = 'Reselect Seats';
+reselectButton.type = "button";
 // add a click event listener to the button
 reselectButton.addEventListener('click', () => 
 {
