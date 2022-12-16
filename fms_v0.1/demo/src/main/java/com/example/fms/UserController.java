@@ -2,7 +2,6 @@ package com.example.fms;
 import org.springframework.ui.Model;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +19,7 @@ public class UserController {
     FromTo fromto = new FromTo();
     SelectedSeats selseat = new SelectedSeats();
     ShowAvailFlights flightno=new ShowAvailFlights();
-    Date dateselected;
+    String dateselected;
    @GetMapping("/")
    public String StartUserLogin(Model model){
     //creating objects of the LoginUser and add it to html to get input 
@@ -68,7 +67,7 @@ public class UserController {
     }
     @PostMapping(path="/FlightInfo")
     public @ResponseBody void EndFlightInfo(@ModelAttribute("Flightinfo") FlightInfoUser Flightinfo, Model model,HttpServletResponse response)throws IOException {
-        dateselected=Flightinfo.getDate();
+        dateselected=Flightinfo.getDateString();
         avf=query.getAvailableFlights(Flightinfo);
         fromto.setFrom(Flightinfo.getFrom());
         fromto.setTo(Flightinfo.getTo());
@@ -88,9 +87,9 @@ public class UserController {
         return "ShowAvailableFlight";
     }
     @PostMapping("/ShowAvailableFlight")
-    public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response)throws IOException
+    public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response,@RequestParam("flightnumberbtn")String Flightnum)throws IOException
     {
-        AvailSeats=query.availableSeats(FlightNoSelected.getFlightNo());
+        AvailSeats=query.availableSeats(Flightnum);
         flightno=FlightNoSelected;
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/AvailableSeats");
@@ -117,6 +116,13 @@ public class UserController {
     @GetMapping("/ShowingTheFinalSummary")
     public String StartSummary(Model model)
     {
+        //for testing
+        // ArrayList<String> seatest = new ArrayList<String>();
+        // seatest.add("a1");
+        // seatest.add("a2");
+        // seatest.add("b1");
+        // seatest.add("b2");
+        //summary sum = new summary(seatest, 1000, "dubai", "mumbai", "2023-02-07");
         int tp= selseat.getNumofseats()*query.getSeatPrice(flightno.getFlightNo());
         summary sum=new summary(seatsselec,tp,fromto.getTo(),fromto.getFrom(),dateselected);
         model.addAttribute("Summary",sum);

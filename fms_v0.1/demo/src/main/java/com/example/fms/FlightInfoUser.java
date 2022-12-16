@@ -1,6 +1,5 @@
 package com.example.fms;
 import java.sql.Date;
-
 public class FlightInfoUser {
     private String from;
     private String to;
@@ -37,6 +36,10 @@ public class FlightInfoUser {
     public int getPassengers()
     {
         return passengers;
+    }
+    public String getDateString()
+    {
+        return date.toString();
     }
 }
 

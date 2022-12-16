@@ -1,5 +1,4 @@
 package com.example.fms;
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class summary {
@@ -7,8 +6,8 @@ public class summary {
     private int totalprice;
     private String to;
     private String from;
-    private Date date;
-    public summary(ArrayList<String> ss,int totalprice,String to,String from,Date date)
+    private String date;
+    public summary(ArrayList<String> ss,int totalprice,String to,String from,String date)
     {
         SelectedSeats=ss;
         this.totalprice=totalprice;
@@ -20,7 +19,7 @@ public class summary {
     {
         
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     public void setFrom(String from) {
@@ -35,7 +34,7 @@ public class summary {
     public void setTotalprice(int totalprice) {
         this.totalprice = totalprice;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
     public String getFrom() {

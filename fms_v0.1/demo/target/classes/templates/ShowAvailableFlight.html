@@ -34,9 +34,9 @@
                 <div id="arrive_time">
                     <li th:text="${num.ArrivalTime}">17:00</li>
                 </div>
-                <a href="selection.html"id="economy">Economy
+                <button type="submit" id="economy" name="flightnumberbtn" th:value="${num.Flightnums}">Economy
                     <li th:text="${num.Price}">Price</li>
-                </a>
+                </button>
                 <!-- <a href="selection.html"id="buisness">Buisness
                     <br>
                     <li th:text="${num.BusinessPrice}">AED 1500</li>
