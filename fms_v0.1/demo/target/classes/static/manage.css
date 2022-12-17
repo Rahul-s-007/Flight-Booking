@@ -6,6 +6,7 @@
     padding: 0; 
     box-sizing: border-box;
     font-family: 'Source Sans Pro';
+    /* outline: 2px solid limegreen !important; */
 }
 html
 {
@@ -116,14 +117,18 @@ section
 {
     display: flex;
     width: 90vw;
-    height: 30vh;
+    height: 33vh;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 10px;
     position: relative;
     left: 0;
     right: 0;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 2%;
+}
+.info
+{
+    height: 100%;
 }
 .box img
 {
@@ -133,7 +138,7 @@ section
 .cities
 {
     display: flex;
-    margin: 20px;
+    margin: 10px;
     margin-left: 30px;
     margin-bottom: 10px;
     font-family: 'Source Sans Pro';
@@ -162,6 +167,13 @@ section
     font-size: 18px;
     color: #000000;
 }
+.cancel
+{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 5px;
+}
 .box button
 {
     display: flex;
@@ -169,8 +181,6 @@ section
     justify-content: center;
     height: 20%;
     position: relative;
-    top: 70%;
-    left: 5%;
     background: transparent;
     border: 2px solid rgba(255, 0, 0, 0.45);
     cursor: pointer;

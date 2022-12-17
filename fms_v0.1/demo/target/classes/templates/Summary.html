@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/Summary.css}">
+    <link rel="stylesheet" href="payment.css">
     <title>Payment</title>
 </head>
 <body>
@@ -12,22 +12,21 @@
         <a href="index.html"><img src="./img/LOGO.svg" alt="" srcset="" class="logo"></a>
         <div><a href="selection.html">Return</a></div>
     </header>
-    <section>
         <div class="box">
             <h1 class="heading">Trip Summary</h1>
             <div class="summary">
-                <h2 th:text="${#strings.capitalize(Summary.from)}" class="class"></h2><h2>to</h2><h2 th:text="${#strings.capitalize(Summary.to)}"></h2>
+                <h2 class="class">Pune to Mumbai</h2>
                 <br>
-                <span th:text="${Summary.SelectedSeats.size()}+' x Adults:'">2 x Adults</span><span class="info" id="price_tickets" th:text="'AED '+${Summary.totalprice/Summary.SelectedSeats.size()}">AED1200</span>
+                <span>2 x Adults</span><span class="info" id="price_tickets">AED1200</span>
                 <br>
-                <!-- <span>Seat No:</span><span class="info" id="seat_no" th:text="${Summary.SelectedSeats}">B7</span> -->
-                <span>Seat No:</span><span class="info" id="seat_no" th:each="seat,iterStat : ${Summary.SelectedSeats}" th:text="${#strings.capitalize(seat)} + ${!iterStat.last ? ', ' : ''}"></span>
+                <span>Seat No:</span><span class="info" id="seat_no">B7</span>
                 <h2 class="class"></h2>
                 <br>
-                <h2 class="total">Total Payment:</h2><span class="total_pay" id="total_price" th:text="'AED '+${Summary.totalprice}">AED 24000</span>
+                <h2 class="total">Total Payment:</h2><span class="total_pay" id="total_price">AED 24000</span>
             </div>
-            <button class="button"><p>Download Tickets</p></button>
+            <div class="download">
+                <button class="button"><p>Download Tickets</p></button>
+            </div>
         </div>
-    </section>
 </body>
 </html>
