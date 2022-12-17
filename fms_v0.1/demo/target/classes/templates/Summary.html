@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<hea-d>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,8 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img src="./img/LOGO.svg" alt="" srcset="" class="logo"></a>
-        <div><a href="selection.html">Return</a></div>
+        <a href="\FlightInfo"><img src="./img/LOGO.svg" alt="" srcset="" class="logo"></a>
+        <!-- <div><a href="\FlightInfo">Return</a></div> -->
     </header>
         <div class="box">
             <h1 class="heading">Trip Summary</h1>
@@ -24,7 +24,9 @@
                 <br>
                 <h2 class="total">Total Payment:</h2><span class="total_pay" id="total_price" th:text="'AED '+${Summary.totalprice}">AED 24000</span>
             </div>
-            <button class="button"><p>Download Tickets</p></button>
+            <div class="download">
+                <a href="\FlightInfo" class="button"><p>Go Home</p></a>
+            </div>
         </div>
 </body>
 </html>

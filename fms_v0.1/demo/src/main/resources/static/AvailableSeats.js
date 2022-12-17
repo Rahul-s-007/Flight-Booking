@@ -7,6 +7,7 @@ const maxSeats = 5;
 // counter for the number of selected seats
 let selectedSeats = 0;
 
+var selstring = "";
 // get the seat map container
 const seatMap = document.querySelector('.seat-map');
 
@@ -50,10 +51,13 @@ for (let row = 0; row < 7; row++)
         console.log('Seat clicked:', seat.id);
         const seat_no = document.getElementById("seat_no")
         seat_no.innerHTML += seat.id + " ";
+        selstring+=seat.id+" ";
+        document.getElementById("selectedstring").value = selstring;
         selectedSeats++;
       } 
       else
       {
+        
         // if the seat is not occupied and is already selected,
         // remove the 'selected' class and decrement the selected seats counter
 

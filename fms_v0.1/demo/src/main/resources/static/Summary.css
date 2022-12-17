@@ -125,6 +125,12 @@ header div a
     width: 100%;
     justify-content: flex-end;
 }
+.download
+{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
 .button
 {
     cursor: pointer;
@@ -137,6 +143,9 @@ header div a
     bottom: 0;
     right: 0;
     margin: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .button p
 {

@@ -90,7 +90,8 @@ public class UserController {
     public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response,@RequestParam("flightnumberbtn")String Flightnum)throws IOException
     {
         AvailSeats=query.availableSeats(Flightnum);
-        flightno=FlightNoSelected;
+        System.out.println(AvailSeats);
+        flightno.setFlightNo(Flightnum);
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/AvailableSeats");
     }
@@ -106,11 +107,13 @@ public class UserController {
         return "AvailableSeats";
     }
     @PostMapping("/AvailableSeats")
-    public @ResponseBody void EndAvailableSeats(@ModelAttribute("SelectedSeats") SelectedSeats ss, Model model,HttpServletResponse response)throws IOException
+    public @ResponseBody void EndAvailableSeats(@ModelAttribute("SelectedSeats") SelectedSeats ssobj, Model model,HttpServletResponse response)throws IOException
     {
         //Add selected seats to db
-        selseat = ss;
+        selseat = ssobj;
+        System.out.println("selstring: "+ssobj.getSelstring());//error over here
         seatsselec=selseat.convertseats();
+
         response.sendRedirect("/ShowingTheFinalSummary");
     }
     @GetMapping("/ShowingTheFinalSummary")
@@ -124,6 +127,7 @@ public class UserController {
         // seatest.add("b2");
         // summary sum = new summary(seatest, 1000, "dubai", "mumbai", "2023-02-07");
         int tp= selseat.getNumofseats()*query.getSeatPrice(flightno.getFlightNo());
+        // System.out.println(selseat.getNumofseats());
         summary sum=new summary(seatsselec,tp,fromto.getTo(),fromto.getFrom(),dateselected);
         model.addAttribute("Summary",sum);
         return "Summary";

@@ -234,15 +234,16 @@ public class testdb
     public int getSeatPrice(String flightNo)
     {
         int ans = 0;
-        String query = String.format("Select price from allflightnum where flightnum = \"%s\"",flightNo);
+        String query = String.format("Select price as pr from allflightnum where flightnum = \"%s\"",flightNo);
         try
         {
             rs = st.executeQuery(query);
             rs.next();
-            ans = Integer.parseInt(rs.getString(1));
+            ans = rs.getInt("pr");
         }
         catch(SQLException ex)
         {
+            System.out.println(query);
             System.out.println("DB Error get price");
             return ans;
         }

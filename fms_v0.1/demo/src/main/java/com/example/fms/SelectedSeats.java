@@ -4,7 +4,7 @@ import java.util.StringTokenizer;
 public class SelectedSeats {
     private static ArrayList <String> SelectedSeats= new ArrayList<String>();
     private String Selstring;
-    private int numofseats=0;
+    private int numofseats;
     public SelectedSeats(String Selstring)
     {
         this.Selstring = Selstring;
@@ -27,6 +27,7 @@ public class SelectedSeats {
             SelectedSeats.add(str.nextToken().toLowerCase().trim());
         }
         numofseats=SelectedSeats.size();
+        System.out.println("Selected sets:"+Selstring);
         return SelectedSeats;
    }
    public void setNumofseats(int numofseats) {
