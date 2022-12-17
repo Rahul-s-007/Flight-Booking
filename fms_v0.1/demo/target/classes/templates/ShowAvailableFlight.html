@@ -34,9 +34,11 @@
                 <div id="arrive_time">
                     <li th:text="${num.ArrivalTime}">17:00</li>
                 </div>
-                <button type="submit" id="economy" name="flightnumberbtn" th:value="${num.Flightnums}">Economy
-                    <li th:text="${num.Price}">Price</li>
-                </button>
+                <form action="#" method="post" th:action="@{/ShowAvailableFlight}">
+                    <button type="submit" id="economy" name="flightnumberbtn" th:value="${num.Flightnums}">Economy
+                        <li th:text="${num.Price}">Price</li>
+                    </button>
+                </form>
                 <!-- <a href="selection.html"id="buisness">Buisness
                     <br>
                     <li th:text="${num.BusinessPrice}">AED 1500</li>
