@@ -264,6 +264,10 @@ button:hover
     transition: .3s;
     z-index: 10;
 }
+.seat.occupied:hover
+{
+    cursor: not-allowed;
+}
 .seat.occupied 
 {
     border: 2px solid rgba(0, 0, 0, 0.1);

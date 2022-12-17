@@ -1,5 +1,5 @@
 // list of occupied seats
-const occupiedSeats = ['A1', 'A2', 'A3' , 'D3'];
+const occupiedSeats = ['A1']
 
 // maximum number of seats that can be selected
 const maxSeats = 5;
@@ -89,6 +89,7 @@ reselectButton.addEventListener('click', () =>
   const seats = document.querySelectorAll('.seat');
   // remove the 'selected' class from each seat
   seats.forEach(seat => seat.classList.remove('selected'));
+  selstring = "";
 
   seat_no.innerHTML = "Seat No:";
   // reset the selected seats counter
