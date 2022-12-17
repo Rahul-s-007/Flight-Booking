@@ -116,13 +116,13 @@ public class UserController {
     @GetMapping("/ShowingTheFinalSummary")
     public String StartSummary(Model model)
     {
-        //for testing
+        // for testing
         // ArrayList<String> seatest = new ArrayList<String>();
         // seatest.add("a1");
         // seatest.add("a2");
         // seatest.add("b1");
         // seatest.add("b2");
-        //summary sum = new summary(seatest, 1000, "dubai", "mumbai", "2023-02-07");
+        // summary sum = new summary(seatest, 1000, "dubai", "mumbai", "2023-02-07");
         int tp= selseat.getNumofseats()*query.getSeatPrice(flightno.getFlightNo());
         summary sum=new summary(seatsselec,tp,fromto.getTo(),fromto.getFrom(),dateselected);
         model.addAttribute("Summary",sum);
