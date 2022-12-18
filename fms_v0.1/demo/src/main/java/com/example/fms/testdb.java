@@ -10,6 +10,7 @@ public class testdb
     public String ans="";
     private Connection con;
     private Statement st;
+    private Statement st1;
     private ResultSet rs;
     private ResultSet rs1;
 
@@ -21,6 +22,7 @@ public class testdb
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/flightmanagment","root","7703");
             st=con.createStatement();
+            st1=con.createStatement();
         }catch(ClassNotFoundException | SQLException ex)
         {
             //JOptionPane.showMessageDialog(null,"Error: "+ex);
@@ -197,7 +199,7 @@ public class testdb
             System.out.println("DB Error current date");
         }
         
-        String query2 = String.format("Select * from %s where DATE(flightDate) > \"%s\"",username,currDATE);
+        String query2 = String.format("Select FlightsBooked as fb from %s where DATE(flightDate) > \"%s\"",username,currDATE);
         System.out.println(query2);
         
         int recordavail = isExists(query2);
@@ -208,10 +210,15 @@ public class testdb
                 rs = st.executeQuery(query2);
                 while(rs.next())
                 {
+                    //System.out.println(rs.getString("fb"));
                     String query3 = String.format("Select destTO, destFROM, flightDATE, arrivalDATE from allflightnum where flightnum = \"%s\"",rs.getString(1));
-                    rs1= st.executeQuery(query3);
+                    //System.out.println(query3);
+                    rs1 = st1.executeQuery(query3);
+                    //System.out.println("Query executed");
+                    rs1.next();
                     // flightno,to,from,depature,arrival
-                    BookedFlight obj=new BookedFlight(rs.getString(1), rs1.getString(1), rs1.getString(2), rs1.getString(3), rs1.getString(4));
+                    //System.out.println(rs1.getString(1) + rs1.getString(2) + rs1.getString(3) + rs1.getString(4));
+                    BookedFlight obj = new BookedFlight(rs.getString("fb"),rs1.getString(2), rs1.getString(1), rs1.getString(3), rs1.getString(4));
                     ans.add(obj);
                     //ans1.add(rs.getString(1));
                 }
@@ -219,7 +226,7 @@ public class testdb
             }
             catch(SQLException ex)
             {
-                System.out.println("DB Error");
+                System.out.println("DB Error user booked flights");
                 return ans;
             }
         }
@@ -229,6 +236,7 @@ public class testdb
             return ans;
         }
     }
+
 
     // get seat price of a flight
     public int getSeatPrice(String flightNo)
@@ -278,6 +286,42 @@ public class testdb
             addSeatBooked(itr.next(), flightNO, username);
         }
         updateAvailableSeats(flightNO);
+        String flightDATE = getFlightDATE(flightNO);
+        addUserFlights(username, flightNO, flightDATE);
+    }
+
+    public String getFlightDATE(String flightNO)
+    {
+        String ans = "";
+        String query = String.format("Select flightDATE as fd from allflightnum where flightnum = \"%s\"",flightNO);
+        try
+        {
+            rs = st.executeQuery(query);
+            rs.next();
+            ans = rs.getString("fd");
+        }
+        catch(SQLException ex)
+        {
+            System.out.println(query);
+            System.out.println("DB Error get flight date");
+            return ans;
+        }
+        return ans;
+    }
+
+
+    public void addUserFlights(String username, String flighNO, String FlightDate)
+    {
+        String query = String.format("Insert into %s values(\"%s\",\"%s\")",username,flighNO,FlightDate);
+        try 
+        {
+            st.executeUpdate(query);
+        } 
+        catch(SQLException e) 
+        {
+            System.out.println("DB Error insert flight in user");
+        }
+
     }
     
     
@@ -313,6 +357,21 @@ public class testdb
             System.out.println("DB Error arr seat remove");
         }
         updateAvailableSeats(flightNO);
+        removeUserFlights(username, flightNO);
+    }
+
+    public void removeUserFlights(String username, String flighNO)
+    {
+        // DELETE FROM rahuls WHERE product_id=1;
+        String query = String.format("DELETE from %s where FlightsBooked = \"%s\"",username,flighNO);
+        try 
+        {
+            st.executeUpdate(query);
+        } 
+        catch(SQLException e) 
+        {
+            System.out.println("DB Error remove flight from user");
+        }
     }
 
 
@@ -323,9 +382,11 @@ public class testdb
         int numSeats = 0;
         try
         {
-            String query1 = String.format("select count(seatName) from %s where seatTaken = 0",flightNO);
+            String query1 = String.format("select count(seatName) as sc from %s where seatTaken = 0",flightNO);
+            System.out.println(query1);
             rs = st.executeQuery(query1);
-            numSeats = Integer.parseInt(rs.getString(1));
+            rs.next();
+            numSeats = rs.getInt("sc");
         }
         catch(SQLException e)
         {

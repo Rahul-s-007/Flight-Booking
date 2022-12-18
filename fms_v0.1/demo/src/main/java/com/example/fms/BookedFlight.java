@@ -3,22 +3,23 @@ package com.example.fms;
 public class BookedFlight {
     private String From;
     private String To;
-    private String Date;
+    private String FlightNum;
     private String ArrivalTime;
     private String DepartureTime;
-    public BookedFlight(String From, String To, String ArrivalTime, String DepartureTime, String Date)
+    //public BookedFlight(String From, String To, String ArrivalTime, String DepartureTime, String FlightNum)
+    public BookedFlight(String FlightNum, String From, String To, String ArrivalTime, String DepartureTime)
     {
         this.ArrivalTime = ArrivalTime;
         this.DepartureTime = DepartureTime;
         this.From = From;
         this.To = To;
-        this.Date = Date;
+        this.FlightNum = FlightNum;
     }
     public String getArrivalTime() {
         return ArrivalTime;
     }
-    public String getDate() {
-        return Date;
+    public String getFlightNum() {
+        return FlightNum;
     }
     public String getDepartureTime() {
         return DepartureTime;
@@ -32,8 +33,8 @@ public class BookedFlight {
     public void setArrivalTime(String arrivalTime) {
         ArrivalTime = arrivalTime;
     }
-    public void setDate(String date) {
-        Date = date;
+    public void setFlightNum(String flightNum) {
+        FlightNum = flightNum;
     }
     public void setDepartureTime(String departureTime) {
         DepartureTime = departureTime;

@@ -1,5 +1,5 @@
 // list of occupied seats
-const occupiedSeats = ['A1']
+const occupiedSeats = ['A1','B1','C3','C4','B6']
 
 // maximum number of seats that can be selected
 const maxSeats = 5;
@@ -9,7 +9,8 @@ let selectedSeats = 0;
 
 var selstring = "";
 
-var bookedstring = document.getElementById('bookedstring').value;
+// var bookedstring = document.getElementById('bookedstring').value;
+// console.log(bookedstring);
 // get the seat map container
 const seatMap = document.querySelector('.seat-map');
 

@@ -103,8 +103,10 @@ public class UserController {
        SelectedSeats ss = new SelectedSeats();
        BookedSeats bs = new BookedSeats();
        bs.convertstring(AvailSeats);
+       System.out.println("Booked seatsstring"+bs.getBookedSeatsString());
        model.addAttribute("SelectedSeats", ss);
        model.addAttribute("BookedSeats", bs);
+       model.addAttribute("myString", bs.getBookedSeatsString());
        //adding FilledSeats for the html to get the seats alreay filled
         model.addAttribute("AvailSeats", AvailSeats);
         //the return statement call the html file to run(return statement and the html file name should be same)
@@ -117,7 +119,6 @@ public class UserController {
         selseat = ssobj;
         System.out.println("selstring: "+ssobj.getSelstring());//error over here
         seatsselec=selseat.convertseats();
-
         response.sendRedirect("/ShowingTheFinalSummary");
     }
     @GetMapping("/ShowingTheFinalSummary")
@@ -152,9 +153,9 @@ public class UserController {
         return "manage";
     }
     @PostMapping("/Manage")
-    public void EndManage(ShowAvailFlights flightnum,HttpServletResponse response)throws IOException
+    public void EndManage(ShowAvailFlights flightnum,HttpServletResponse response, @RequestParam("cancelbtn")String Flightnum)throws IOException
     {
-        query.arraySeatsRemove(flightnum.getFlightNo(),manage.getUsername());
-        response.sendRedirect("/Manage");
+        query.arraySeatsRemove(Flightnum,manage.getUsername());
+        response.sendRedirect("/FlightInfo");
     }
 }
