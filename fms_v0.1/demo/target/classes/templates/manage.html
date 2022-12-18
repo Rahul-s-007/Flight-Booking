@@ -25,15 +25,16 @@
 
 <section>
     <div class="container">
+        <ul th:each="flight: ${BookedFlights}">
         <div class="box">
             <img th:src="@{/img/mumbai.jpg}" alt="">
             <div class="info">
                 <div class="cities">
-                    Pune - Mumbai
+                    <li th:text="${flight.From}">Pune</li> - <li th:text="${flight.To}">Pune</li>
                 </div>
                 <div class="passengers">2 x Adults</div>
-                <div class="passengers">5:40 - 6:40</div>
-                <div class="passengers">Saturday, 2ⁿᵈ January</div>
+                <div class="passengers"><li th:text="${flight.DepartureTime}">3.30</li> - <li th:text="${flight.ArrivalTime}">6.30</li></div>
+                <div class="passengers"><li th:text="${flight.Date}"></li></div>
                 <div class="cancel">
                     <button type="button">Cancel Flight</button>
                 </div>

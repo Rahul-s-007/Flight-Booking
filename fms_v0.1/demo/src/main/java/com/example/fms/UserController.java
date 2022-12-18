@@ -90,6 +90,7 @@ public class UserController {
     public @ResponseBody void EndShowFlights(@ModelAttribute("FlightNo") ShowAvailFlights FlightNoSelected,Model model,HttpServletResponse response,@RequestParam("flightnumberbtn")String Flightnum)throws IOException
     {
         AvailSeats=query.availableSeats(Flightnum);
+        
         System.out.println(AvailSeats);
         flightno.setFlightNo(Flightnum);
         //redirecting to the next page after getting the info from html
@@ -100,7 +101,10 @@ public class UserController {
     {
         //creating objects of the SelectedSeats and add it to html to get input
        SelectedSeats ss = new SelectedSeats();
+       BookedSeats bs = new BookedSeats();
+       bs.convertstring(AvailSeats);
        model.addAttribute("SelectedSeats", ss);
+       model.addAttribute("BookedSeats", bs);
        //adding FilledSeats for the html to get the seats alreay filled
         model.addAttribute("AvailSeats", AvailSeats);
         //the return statement call the html file to run(return statement and the html file name should be same)
@@ -130,6 +134,8 @@ public class UserController {
         // System.out.println(selseat.getNumofseats());
         summary sum=new summary(seatsselec,tp,fromto.getTo(),fromto.getFrom(),dateselected);
         model.addAttribute("Summary",sum);
+        //pass booked seat to db
+        query.arraySeatsBooked(flightno.getFlightNo(), seatsselec, manage.getUsername());
         return "Summary";
     }
     @PostMapping("/ShowingTheFinalSummary")

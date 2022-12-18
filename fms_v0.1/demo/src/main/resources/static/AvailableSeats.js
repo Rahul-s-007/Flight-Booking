@@ -8,6 +8,8 @@ const maxSeats = 5;
 let selectedSeats = 0;
 
 var selstring = "";
+
+var bookedstring = document.getElementById('bookedstring').value;
 // get the seat map container
 const seatMap = document.querySelector('.seat-map');
 
