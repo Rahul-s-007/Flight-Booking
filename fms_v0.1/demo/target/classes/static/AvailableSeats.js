@@ -1,6 +1,7 @@
 // list of occupied seats
-const occupiedSeats = ['A1','B1','C3','C4','B6']
-
+var occupiedSeats = []
+occupiedSeats = (occupiedSeats.concat(seatstring.split(" ")));
+console.log(occupiedSeats);
 // maximum number of seats that can be selected
 const maxSeats = 5;
 

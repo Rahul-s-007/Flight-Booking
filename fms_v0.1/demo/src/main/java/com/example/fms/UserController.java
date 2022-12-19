@@ -106,7 +106,7 @@ public class UserController {
        System.out.println("Booked seatsstring"+bs.getBookedSeatsString());
        model.addAttribute("SelectedSeats", ss);
        model.addAttribute("BookedSeats", bs);
-       model.addAttribute("myString", bs.getBookedSeatsString());
+       model.addAttribute("bookseatstring", bs.getBookedSeatsString());
        //adding FilledSeats for the html to get the seats alreay filled
         model.addAttribute("AvailSeats", AvailSeats);
         //the return statement call the html file to run(return statement and the html file name should be same)

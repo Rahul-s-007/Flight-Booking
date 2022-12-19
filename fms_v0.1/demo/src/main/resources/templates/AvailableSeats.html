@@ -45,8 +45,9 @@
         </div>
     </section>
     <script th:inline="javascript">
-        var myJsString = "${myString}";
-        console.log(myJsString);
+             var seatstring = [[${bookseatstring}]];
+             seatstring = seatstring.toUpperCase();
+            console.log(seatstring);
     </script>
     <script src="AvailableSeats.js"></script>
 </body>
