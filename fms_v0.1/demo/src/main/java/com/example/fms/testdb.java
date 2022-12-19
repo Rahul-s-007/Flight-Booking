@@ -283,7 +283,7 @@ public class testdb
         Iterator<String> itr = seats.iterator();
         while(itr.hasNext())
         {
-            addSeatBooked(itr.next(), flightNO, username);
+            addSeatBooked(itr.next().trim(), flightNO, username);
         }
         updateAvailableSeats(flightNO);
         String flightDATE = getFlightDATE(flightNO);
@@ -343,13 +343,14 @@ public class testdb
     public void arraySeatsRemove(String flightNO, String username)//done
     {
         // select seatName from pk505 where bookedBy = "rahuls";
-        String query = String.format("Select seatName from %s where bookedBy = \"%s\"",flightNO,username);
+        String query = String.format("Select seatName as sn from %s where bookedBy = \"%s\"",flightNO,username);
         try
         {
+            System.out.println(query);
             rs = st.executeQuery(query);
             while(rs.next())
             {
-                removeSeatBooked(flightNO, rs.getString(1));
+                removeSeatBooked(flightNO, rs.getString("sn"));
             }
         }
         catch(SQLException e) 

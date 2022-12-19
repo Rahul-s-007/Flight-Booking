@@ -3,13 +3,14 @@ var occupiedSeats = []
 occupiedSeats = (occupiedSeats.concat(seatstring.split(" ")));
 console.log(occupiedSeats);
 // maximum number of seats that can be selected
-const maxSeats = 5;
+var maxSeats = 5;
 
 // counter for the number of selected seats
 let selectedSeats = 0;
 
 var selstring = "";
 
+document.getElementById("selectedstring").value = "";
 // var bookedstring = document.getElementById('bookedstring').value;
 // console.log(bookedstring);
 // get the seat map container
@@ -74,7 +75,8 @@ for (let row = 0; row < 7; row++)
         // seat.classList.remove('selected');
         // seat_no.innerHTML = "Seat No:";
         // seat_no.innerHTML = seat.id + " " + seat_no.innerHTML;
-        selectedSeats--;
+        selectedSeats = 0;
+        selstring = "";
       }
     });
     // add the seat to the seat map

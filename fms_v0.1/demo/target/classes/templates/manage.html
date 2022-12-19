@@ -32,9 +32,9 @@
                 <div class="cities">
                     <span th:text="${flight.From}">Pune</span> - <span th:text="${flight.To}">Pune</span>
                 </div>
-                <div class="passengers">2 x Adults</div>
-                <div class="passengers"><span th:text="${flight.DepartureTime}">3.30</span> - <span th:text="${flight.ArrivalTime}">6.30</span></div>
-                <div class="passengers"><span th:text="${flight.FlightNum}"></span></div>
+                <!-- <div class="passengers">2 x Adults</div> -->
+                <div class="passengers">Departure:&nbsp<span th:text="${flight.DepartureTime}">3.30</span>&nbsp&nbsp-&nbsp&nbspArrival:&nbsp<span th:text="${flight.ArrivalTime}">6.30</span></div>
+                <div class="passengers">Flight No.&nbsp<span th:text="${flight.FlightNum}"></span></div>
                 <div class="cancel">
                     <form action="#" method="post" th:action="@{/Manage}">
                         <button type="submit" name="cancelbtn" th:value="${flight.FlightNum}">Cancel

@@ -11,7 +11,7 @@ public class SelectedSeats {
     }
     public SelectedSeats()
     {
-        
+        this.Selstring = "";
     }
    public String getSelstring() {
        return Selstring;

@@ -10,15 +10,16 @@ import jakarta.servlet.http.HttpServletResponse;
 public class UserController {
     //initializing ArrayList avf(available flight)& filled seats(the seats already filled in the plane)
    private static ArrayList<AvailFlight> avf = new ArrayList<AvailFlight>();
-   private static ArrayList<AvailSeats> AvailSeats=new ArrayList<AvailSeats>();
-   private static ArrayList<BookedFlight> userbookedflights=new ArrayList<BookedFlight>();
-   private static ArrayList<String> seatsselec=new ArrayList<String>();
+   private static ArrayList<AvailSeats> AvailSeats = new ArrayList<AvailSeats>();
+   private static ArrayList<BookedFlight> userbookedflights = new ArrayList<BookedFlight>();
+   private static ArrayList<String> seatsselec = new ArrayList<String>();
    // adding objects for call the queries and manage controller
-    testdb query=new testdb();
-    LoginUser manage=new LoginUser();
+    testdb query = new testdb();
+    LoginUser manage = new LoginUser();
     FromTo fromto = new FromTo();
     SelectedSeats selseat = new SelectedSeats();
-    ShowAvailFlights flightno=new ShowAvailFlights();
+    ShowAvailFlights flightno = new ShowAvailFlights();
+    FlightInfoUser fiu = new FlightInfoUser();
     String dateselected;
    @GetMapping("/")
    public String StartUserLogin(Model model){
@@ -71,6 +72,7 @@ public class UserController {
         avf=query.getAvailableFlights(Flightinfo);
         fromto.setFrom(Flightinfo.getFrom());
         fromto.setTo(Flightinfo.getTo());
+        System.out.println("Number of seats seleced"+Flightinfo.getPassString());
         //redirecting to the next page after getting the info from html
         response.sendRedirect("/ShowAvailableFlight");
     }
@@ -101,6 +103,7 @@ public class UserController {
     {
         //creating objects of the SelectedSeats and add it to html to get input
        SelectedSeats ss = new SelectedSeats();
+       ss.setSelstring("");
        BookedSeats bs = new BookedSeats();
        bs.convertstring(AvailSeats);
        System.out.println("Booked seatsstring"+bs.getBookedSeatsString());
@@ -118,6 +121,7 @@ public class UserController {
         //Add selected seats to db
         selseat = ssobj;
         System.out.println("selstring: "+ssobj.getSelstring());//error over here
+        seatsselec.clear();
         seatsselec=selseat.convertseats();
         response.sendRedirect("/ShowingTheFinalSummary");
     }
