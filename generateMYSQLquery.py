@@ -21,7 +21,7 @@ select flightnum, TIME(flightDATE), TIME(arrivalDATE), price from allflightnum w
 
 """
 
-flightname = "EK002"
+flightname = "TK004"
 
 s ="""
 create table EK507(seatName varchar(3), seatTaken int(2), bookedBy varchar(30));
