@@ -313,6 +313,7 @@ public class testdb
     public void addUserFlights(String username, String flighNO, String FlightDate)
     {
         String query = String.format("Insert into %s values(\"%s\",\"%s\")",username,flighNO,FlightDate);
+        System.out.println(query);
         try 
         {
             st.executeUpdate(query);
@@ -331,7 +332,8 @@ public class testdb
         String query = String.format("Update %s SET bookedBy = Null, seatTaken = 0 where seatName = \"%s\"",flightNO ,seat);
         try 
         {
-            st.executeUpdate(query);
+            System.out.println(query);
+            st1.executeUpdate(query);
         } 
         catch(SQLException e) 
         {
@@ -350,6 +352,7 @@ public class testdb
             rs = st.executeQuery(query);
             while(rs.next())
             {
+                System.out.println(rs.getString("sn"));
                 removeSeatBooked(flightNO, rs.getString("sn"));
             }
         }
