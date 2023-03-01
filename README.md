@@ -13,18 +13,11 @@
 * Backend/Database- MySQL
 
 
-## Structure of Database:
+## Structure of Databases:
 
 ### Table name: userdata
 
-Column Name | Type | Size
-------------|------|--------
-Username | Varchar | 40
-Following	|Varchar | 20
-Followers	| Varchar	| 20
-Following	| Varchar	| 20
-
-![](Documentation%20images/userdatatable.jpg)
+![](Documentation%20images/Table%20Descriptions/user%20logon.png)
 
 ## Imports:
 * import datetime
