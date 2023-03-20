@@ -1,5 +1,9 @@
 # Flight-Booking
 
+Our team has designed a flight management system, a web application for booking and managing flights, built in Java, using Spring Boot framework. Our management system can find flights, book flights with seat selection and cancel flights. Using modern HTML and CSS, the website has the look and feel of a modern web application. The application is equipped with an SQL database for storing all flight and user information.
+Our application’s backend is built in Java using Spring Boot. Spring Boot is an open source Java-based framework used to create micro Service. It is used to build stand-alone and production ready applications. The application can directly be embedded and run on a local server such as Apache Tomcat. We have used the Spring Web MVC dependency and Thymeleaf for passing data from and to HTML. The web pages are made using HTML 5 and designed using CSS. 
+The sophisticated database structure is employed to store, retrieve and manage data. SQL is used for the database and the queries were called from Java using JDBC API.
+
 ## Jump to [Documentation](#documentation)
 
 # Note:
@@ -7,106 +11,65 @@
 *Documentation Images folder has no use in execution of code and is only used for README.md file*
 
 
-## Made using:
-* Pyhton 3.7
-* GUI- Tkinter
-* Backend/Database- MySQL
+# Made using:
+* Java
+* MySQL
+* JDBC
+* Spring Boot
+* HTML
+* CSS
+* Thymeleaf
+* Apache Tomcat
 
 
-## Structure of Databases:
+# Structure of Databases:
 
-### Table name: userdata
+## 1.) userdata
 
 ![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/Table%20Descriptions/user%20logon.png)
 
-## Imports:
-* import datetime
-* import matplotlib.pyplot as pl
-* import sys
-* import os
-* import glob
-* import shutil
-* from PIL import ImageTk
-* import PIL.Image
-* import instaloader
-* from instaloader import Instaloader, Profile
-* from tkinter import*
+## 2.) allflightnum
+
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/Table%20Descriptions/allflightnum.png)
+
+## 3.) flightseats
+
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/Table%20Descriptions/flightseats.png)
+
+## 4.) userflights
+
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/Table%20Descriptions/userflights.png)
+
+
 
 # Documentation:
 
 ## Jump to a section:
-* [MySQL Database Connection](#mysql-database-connection)
-* [Font, Background and Text Colour](#font-background-and-text-colour)
-* [Initilization of Tkinter Pages](#initilization-of-tkinter-pages)
-* [Home Page](#home-page)
-* [Login and Search Page](#login-and-search-page)
-* [Search Result Page](#search-result-page)
-* [Show Graph Page](#show-graph-page)
-* [Save Profile (Code)](#save-profile-code)
-* [Search Database Page](#search-database-page)
-* [Search Database Result](#search-database-result)
-* ["Go Home" Button (Code)](#go-home-button-code)
-* ["Close" Button (Code)](#close-button-code)
-* [Limitations](#limitations-of-this-application-software)
+* [Login Page](#login-page)
+* [Find Flights](#find-flights)
+* [Available Flights](#available-flights)
+* [Seat Selection](#seat-selection)
+* [Booking Summary](#booking-summary)
+* [Manage Booked Flights](#manage-booked-flights)
+* [Contact Us](#contact-us)
 
-## MySQL Database Connection:
-![](Documentation%20Images/codemysqllogin.jpg)
+## Login Page:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/login%20page.png)
 
-## Font, Background and Text Colour:
-![](Documentation%20Images/codefonts.jpg)
+## Find Flights:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/find%20flights.png)
 
-## Initilization of Tkinter Pages:
-![](Documentation%20Images/codetkinit.jpg)
+## Available Flights:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/available%20flights.png)
 
-## Home Page:
-![](Documentation%20Images/HomePage.jpg)
+## Seat Selection:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/seat%20selection.png)
 
-## Home Page (Code):
-![](Documentation%20Images/codehomepage.jpg)
+## Booking Summary:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/Booking%20Summary.png)
 
-## Login and Search Page:
-![](Documentation%20Images/loginpage.jpg)
+## Manage Booked Flights:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/manage%20booked%20flights.png)
 
-## Login and Search Page (Code):
-![](Documentation%20Images/codeloginpage1.jpg)
-
-## Search Result Page:
-![](Documentation%20Images/afterlogin.jpg)
-
-## Search Result (Code):
-![](Documentation%20Images/codesearchresult1.jpg)
-
-## Show Graph Page:
-![](Documentation%20Images/profileGraph.jpg)
-
-## Graph (Code):
-![](Documentation%20Images/codeshowgraph.jpg)
-
-## Save Profile (Code):
-![](Documentation%20Images/codesaveprofile1.jpg)
-![](Documentation%20Images/codesaveprofile2.jpg)
-
-## Search Database Page:
-![](Documentation%20Images/databasesearch.jpg)
-
-## Search Database Page (Code):
-![](Documentation%20Images/codesearchdatabase1.jpg)
-
-## Search Database Result:
-![](Documentation%20Images/databaseresult.jpg)
-
-## Search Database Result (Code):
-![](Documentation%20Images/codesearchdatabase2.jpg)
-![](Documentation%20Images/codesearchdatabase3.jpg)
-
-## "Go Home" Button (Code):
-![](Documentation%20Images/codebacktohome.jpg)
-
-## "Close" Button (Code):
-![](Documentation%20Images/codeexitprogram.jpg)
-
-## Limitations of this application software:
-### 1. In the case of Private Instagram Accounts the user needs to be in the followers list      of the said target account.
-### 2. The metric of “Ghost Followers” is meaningless in case the target profile has    zero Instagram posts.
-### 3. In a single run instance, the user can retrieve data from only one target profile at a time.
-
+## Contact Us:
+![](https://github.com/Rahul-s-007/Flight-Booking/blob/main/Documentation%20%20images/contact%20us.png)
